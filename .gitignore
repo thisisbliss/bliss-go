@@ -1,0 +1,2 @@
+# Ignore Sass cache
+css/.sass-cache*
