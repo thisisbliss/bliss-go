@@ -1,4 +1,4 @@
-name = BLISS Reset
+name = BLISS Go
 description = A bare starting point for Drupal 7.
 package = Core
 version = VERSION

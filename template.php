@@ -1,6 +1,6 @@
 <?php
 
-function blissreset_preprocess_page(&$vars, $hook) {
+function blissgo_preprocess_page(&$vars, $hook) {
 
   /**
    * Add typekit asynchronously
@@ -54,7 +54,7 @@ function blissreset_preprocess_page(&$vars, $hook) {
  * Turn off styles from system/contrib modules
  */
 
-function blissreset_css_alter(&$css) {
+function blissgo_css_alter(&$css) {
   unset($css[drupal_get_path('module', 'system') . '/system.theme.css']);
   unset($css[drupal_get_path('module', 'system') . '/system.menus.css']);
 }
