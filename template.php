@@ -1,7 +1,6 @@
 <?php
 
 function blissgo_preprocess_page(&$vars, $hook) {
-
   /**
    * Add typekit asynchronously
    */ 
@@ -47,13 +46,25 @@ function blissgo_preprocess_page(&$vars, $hook) {
   //   '),
   //   'viewport',
   // );
+}
 
+/**
+ * Implements hook_preprocess_node().
+ */
+
+function blissgo_preprocess_node(&$vars) {
+
+  // Adds a node template suggestion for teasers e.g. node--article--teaser.tpl.php
+  if($vars['view_mode'] == 'teaser') {
+    $vars['theme_hook_suggestions'][] = 'node__' . $vars['type'] . '__teaser';
+    $vars['theme_hook_suggestions'][] = 'node__teaser';
+  }
+  
 }
 
 /**
  * Turn off styles from system/contrib modules
  */
-
 function blissgo_css_alter(&$css) {
   unset($css[drupal_get_path('module', 'system') . '/system.theme.css']);
   unset($css[drupal_get_path('module', 'system') . '/system.menus.css']);

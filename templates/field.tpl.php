@@ -44,8 +44,6 @@
  * @ingroup themeable
  */
 ?>
-<div class="<?php print $classes; ?>"<?php print $attributes; ?>>
-  <?php foreach ($items as $delta => $item): ?>
-    <div class="field-item <?php print $delta % 2 ? 'odd' : 'even'; ?>"<?php print $item_attributes[$delta]; ?>><?php print render($item); ?></div>
-  <?php endforeach; ?>
-</div>
+<?php foreach ($items as $delta => $item) : ?>
+    <?php print render($item); ?>
+<?php endforeach; ?>
