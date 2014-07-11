@@ -74,7 +74,7 @@
 ?>
 <div class="wrapper">
 
-  <header class="header <?php print $secondary_menu ? 'with-secondary-menu': 'without-secondary-menu'; ?>">
+  <header role="banner" class="header <?php print $secondary_menu ? 'with-secondary-menu': 'without-secondary-menu'; ?>">
 
     <?php print render($page['header']); ?>
 
@@ -106,7 +106,7 @@
 
   <?php print render($page['help']); ?>
 
-  <article class="main-content clearfix">
+  <main role="main" class="main-content clearfix">
 
     <?php if ($breadcrumb): ?>
       <nav class="breadcrumb"><?php print $breadcrumb; ?></nav>
@@ -120,9 +120,11 @@
 
     <?php print render($title_prefix); ?>
     <?php if ($title): ?>
+    <header>
       <h1 class="title page-title">
         <?php print $title; ?>
       </h1>
+    </header>
     <?php endif; ?>
     <?php print render($title_suffix); ?>
     
@@ -140,10 +142,10 @@
       </aside>
     <?php endif; ?>
 
-  </article>
+  </main>
 
   <?php if ($page['footer']): ?>
-    <footer class="footer">
+    <footer role="contentinfo" class="footer">
       <?php print render($page['footer']); ?>
     </footer>
   <?php endif; ?>

@@ -1,7 +1,7 @@
 name = BLISS Go
 description = A bare starting point for Drupal 7.
 package = Core
-version = VERSION
+version = 0.2
 core = 7.x
 
 ; Add the main stylesheet
