@@ -12,3 +12,6 @@ BLISS Go ships with a built in bash file that will perform all the nessecary Sas
 Run this commend from the root of the theme to compile the Sass. `$ ./compile-sass.sh`
 
 Obviously feel free to use your own preprocessor tools but make sure Sass is compiled to `css/main.css`.
+
+### Branches
+BLISS Go ships with a stable Drupal 7 branch (7.x) and a development Drupal 8 branch (8.x). `master` is currently mapped to the 7.0 branch.
