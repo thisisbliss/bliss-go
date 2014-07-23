@@ -1,5 +1,16 @@
 <?php
 
+/**
+* Remove node page from frontpage content
+*/
+function blissgo_init(){
+ //Check we're not on an individual node using arg(1)
+ if(arg(0) == 'node' && !arg(1)){
+   $homepage = variable_get('site_frontpage');
+   drupal_goto($homepage);
+ }
+}
+
 function blissgo_preprocess_page(&$vars, $hook) {
   /**
    * Add typekit asynchronously
