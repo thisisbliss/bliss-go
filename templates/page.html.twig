@@ -1,0 +1,77 @@
+<div class="wrapper">
+
+  <header role="banner" class="header">
+    
+    {% if page.header %}
+      {{ page.header }}
+    {% endif %}
+
+    {% if main_menu %}
+      <nav class="main-menu" role="navigation">
+        {{ main_menu }}
+      </nav>
+    {% endif %}
+
+    {% if secondary_menu %}
+      <nav class="secondary-menu" role="navigation">
+        {{ secondary_menu }}
+      </nav>
+    {% endif %}
+
+  </header>
+
+  {% if messages %}
+    <section class="messages">
+      {{ messages }}
+    </section>
+  {% endif %}
+
+  {% if page.help %}
+    {{ page.help }}
+  {% endif %}
+
+  <main role="main" class="main-content clearfix">
+
+    <?php if ($breadcrumb): ?>
+      <nav class="breadcrumb"><?php print $breadcrumb; ?></nav>
+    <?php endif; ?>
+
+    {% if tabs %}
+      <nav class="tabs" role="navigation">
+        {{ tabs }}
+      </nav>
+    {% endif %}
+
+    {{ title_prefix }}
+    {% if title %}
+      <header>
+        <h1 class="title page-title">
+          {{ title }}
+        </h1>
+      </header>
+    {% endif %}
+    {{ title_suffix }}
+    
+    {{ page.content }}
+
+    {% if sidebar_first %}
+      <aside class="sidebar-first column sidebar">
+        {{ sidebar_first }}
+      </aside>
+    {% endif %}
+
+    {% if sidebar_second %}
+      <aside class="sidebar-second column sidebar">
+        {{ sidebar_second }}
+      </aside>
+    {% endif %}
+
+  </main>
+
+  {% if page.footer %}
+    <footer role="contentinfo" class="footer">
+      {{ page.footer }}
+    </footer>
+  {% endif %}
+
+</div>

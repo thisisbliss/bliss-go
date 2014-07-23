@@ -76,25 +76,22 @@
  * @see template_process()
  */
 ?>
-<article id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
+<article id="node-{{ node.id }}" class="{{ attributes.class }} clearfix"{{ attributes }}>
 
-  <?php print render($title_prefix); ?>
-  <?php if (!$page): ?>
+  {{ title_prefix }}
+  {% if not page %}
   <header>
-    <h1<?php print $title_attributes; ?>>
-      <a href="<?php print $node_url; ?>"><?php print $title; ?></a>
+    <h1 {{ title_attributes }}>
+      <a href="{{ node_url }}">{{ label }}</a>
     </h1>
   </header>
-  <?php endif; ?>
-  <?php print render($title_suffix); ?>
+  {% endif %}
+  {{ title_suffix }}
 
-    <?php
-      // We hide the comments and links now so that we can render them later.
-      hide($content['comments']);
-      hide($content['links']);
-      print render($content);
-    ?>
+  {% hide(content.comments) %}
+  {% hide(content.links) %}
 
-  <?php print render($content['comments']); ?>
+  {{ content.body }}
+  {{ content.comments }}
 
 </article>
