@@ -8,6 +8,7 @@ core = 7.x
 stylesheets[all][] = css/main.css
 
 ; Add the main JavaScript
+scripts[] = scripts/html5shiv.js
 scripts[] = scripts/main.js
 scripts[] = scripts/analytics.js
 
