@@ -6,12 +6,17 @@
 
 To get started **copy** the cloned folder to your projects `sites/all/themes` folder. It's important to use the copy command to make sure that any hidden dot files (such as `.gitignore`) are not left behind.
 
-###Compile Sass
-BLISS Go ships with a built in bash file that will perform all the nessecary Sass compilation for you including making sure the CSS is output to the correct path. It will also make checks to make sure you have Ruby installed and if not will install it for you.
+###Watch and Build
 
-Run this commend from the root of the theme to compile the Sass. `$ ./compile-sass.sh`
+BLISS Go comes with two shell scripts that automate certain front-end wordflows. 
 
-Obviously feel free to use your own preprocessor tools but make sure Sass is compiled to `css/main.css`.
+####Watch
+
+`./watch` will compile Sass and then watch for future changes. It produces an uncompressed CSS file.
+
+####Build
+
+`./build` will compile Sass to compressed CSS ready for production. It will also run imageoptim on the images directory.
 
 ### Branches
 BLISS Go ships with a stable Drupal 7 branch (7.x) and a development Drupal 8 branch (8.x). `master` is currently mapped to the 7.0 branch.
