@@ -1,6 +1,6 @@
 #!/bin/bash
 # Ready all our static assetts ready for produciton.
- 
+
 SASS_file="css/sass/main.scss"
 CSS_file="css/main.css"
 
@@ -23,5 +23,3 @@ else
 fi
 
 echo "Build complete, ready for production."
-
- 

@@ -1,52 +1,16 @@
-/*------------------------------------*\
-    Variables
-    - Site wide variables
-\*------------------------------------*/
+//
+//  Variables
+//  - Site wide variables
+//
 
-/*------------------------------------*\
-    Colors / Brand Colors
-\*------------------------------------*/
+//
+//  Colors / Brand Colors
+//
+//  Example:
+//  $primary-color: #000; // Black
+//  $secondary-color: #FFF;  // White
+//
 
-$primary-color: #ee6d28; // Orange
-$secondary-color: #eaeade;  // Grey - Green
-
-$dark: #000; // Black
-$light: #FFF; // White
-
-$heading-color: #232c36; // Dark Grey
-$text-color: #545454; // Light Grey
-
-$error-light: #faf4f3;
-$error-dark: #d95050;
-$error-text: #c11216;
-
-/*------------------------------------*\
-    Font Families & Weights
-\*------------------------------------*/
-
-$heading-font: 'momstypewriterregular', serif; // Heading
-$text-font: 'Open Sans', sans-serif; // Body text
-
-$text-reg: 400; // Regular
-$text-semi: 600; // Semi-bold
-$text-bold: 700; // Bold
-
-/*------------------------------------*\
-    Font Sizing
-\*------------------------------------*/
-
-$s-heading-size: em(20); // 20px
-$heading-size: em(22); //22px
-$l-heading-size: em(26); //26px
-$xl-heading-size: em(36); // 36px
-
-$s-text-size: em(12); // 12px
-$text-size: em(14); // 14px
-$l-text-size: em(16); // 16px
-$xl-text-size: em(18);// 18px
-
-/*------------------------------------*\
-    Margins
-\*------------------------------------*/
-
-$base-margin: em(35); // 35px
+//
+//  Font Families & Weights
+//
