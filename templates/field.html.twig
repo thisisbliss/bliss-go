@@ -7,12 +7,16 @@
  * to your theme's directory and customize it, just like customizing other
  * Drupal templates such as page.html.twig or node.html.twig.
  *
- * For example, for a field named 'body' displayed on the 'article' content
- * type, any of the following templates will override this default
- * implementation. The first of these templates that exists is used:
- * - field--body--article.html.twig
- * - field--article.html.twig
- * - field--body.html.twig
+ * Instead of overriding the theming for all fields, you can also just override
+ * theming for a subset of fields using
+ * @link themeable Theme hook suggestions. @endlink For example,
+ * here are some theme hook suggestions that can be used for a field_foo field
+ * on an article node type:
+ * - field--node--field-foo--article.html.twig
+ * - field--node--field-foo.html.twig
+ * - field--node--article.html.twig
+ * - field--field-foo.html.twig
+ * - field--text-with-summary.html.twig
  * - field.html.twig
  *
  * Available variables:
@@ -20,9 +24,14 @@
  * - label_hidden: Whether to show the field label or not.
  * - title_attributes: HTML attributes for the title.
  * - label: The label for the field.
- * - content_attributes: HTML attributes for the content.
- * - items: List of all the field items.
- * - item_attributes: List of HTML attributes for each item.
+ * - multiple: TRUE if a field can contain multiple items.
+ * - items: List of all the field items. Each item contains:
+ *   - attributes: List of HTML attributes for each item.
+ *   - content: The field item's content.
+ * - entity_type: The entity type to which the field belongs.
+ * - field_name: The name of the field.
+ * - field_type: The type of the field.
+ * - label_display: The display settings for the label.
  *
  * @see template_preprocess_field()
  *
@@ -30,10 +39,19 @@
  */
 #}
 
-{% if not label_hidden %}
+{% if label_hidden %}
+  {% if multiple %}
+    {% for item in items %}
+      {{ item.content }}
+    {% endfor %}
+  {% else %}
+    {% for item in items %}
+      {{ item.content }}
+    {% endfor %}
+  {% endif %}
+{% else %}
   {{ label }}
+  {% for item in items %}
+    {{ item.content }}
+  {% endfor %}
 {% endif %}
-
-{% for delta, item in items %}
-  {{ item }}
-{% endfor %}

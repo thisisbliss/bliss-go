@@ -10,20 +10,16 @@ core: 8.x
 stylesheets:
   all:
     - css/main.css
-  stylesheets-remove: 
-    - normalize.css
-    - system.theme.css
+  # stylesheets-remove:
+  #   - normalize.css
+  #   - system.theme.css
 
 # Scripts
-scripts: 
+scripts:
   - scripts/main.js
   - scripts/analytics.js
 
 # Regions
 regions:
-  header: Header
   help: Help
   content: Content
-  sidebar_first: 'Sidebar first'
-  sidebar_second: 'Sidebar second'
-  footer: Footer
