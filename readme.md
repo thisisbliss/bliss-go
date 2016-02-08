@@ -64,3 +64,25 @@ BLISS Go comes with two shell scripts that automate certain front-end workflows.
 #### Watch
 
 `$ ./watch.sh` runs a gulp watch task which lints and compiles Sass.
+
+#### Manual install and build
+
+Prerequisites
+- Node (https://nodejs.org/en/)
+
+Use of npm may require use of sudo.
+
+Install Gulp globally:
+```
+npm install -g gulp
+```
+Install dependencies from the root of the bliss-go theme:
+```
+npm install
+```
+Compile & Watch Sass with Autoprefixr and Sass Lint.
+From the root of the bliss go theme:
+```
+gulp watch
+```
+
