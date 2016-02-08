@@ -1,35 +1,7 @@
-<div class="wrapper">
+<main role="main" class="main-content clearfix">
 
-  <header role="banner" class="header">
+  <div class="visually-hidden"><a id="main-content" tabindex="-1"></a></div>
 
-    {% if main_menu %}
-      <nav class="main-menu" role="navigation">
-        {{ main_menu }}
-      </nav>
-    {% endif %}
+  {{ page.content }}
 
-    {% if secondary_menu %}
-      <nav class="secondary-menu" role="navigation">
-        {{ secondary_menu }}
-      </nav>
-    {% endif %}
-
-  </header>
-
-  {% if messages %}
-    <section class="messages">
-      {{ messages }}
-    </section>
-  {% endif %}
-
-  {% if page.help %}
-    {{ page.help }}
-  {% endif %}
-
-  <main role="main" class="main-content clearfix">
-
-    {{ page.content }}
-
-  </main>
-
-</div>
+</main>
