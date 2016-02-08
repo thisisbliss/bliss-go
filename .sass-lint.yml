@@ -22,18 +22,18 @@ rules:
   no-css-comments: 0
   no-debug: 0
   no-duplicate-properties: 0
-  no-empty-rulesets: 0
+  no-empty-rulesets: 1
   no-extends: 0
   no-ids: 1
   no-important: 1
   no-invalid-hex: 0
   no-mergeable-selectors: 0
-  no-misspelled-properties: 0
+  no-misspelled-properties: 1
   no-qualifying-elements: 1
   no-trailing-zero: 0
   no-transition-all: 0
-  no-url-protocols: 0
-  no-vendor-prefixes: 0
+  no-url-protocols: 1
+  no-vendor-prefixes: 1
   no-warn: 0
 
   # Nesting
@@ -45,7 +45,7 @@ rules:
   function-name-format: 0
   mixin-name-format: 0
   placeholder-name-format: 0
-  variable-name-format: 0
+  variable-name-format: 1
 
   # Style Guide
   border-zero: 0
@@ -60,17 +60,17 @@ rules:
   leading-zero: 0
   nesting-depth: 1
   property-sort-order: 0
-  quotes: 0
+  quotes: 1
   shorthand-values: 0
   url-quotes: 1
   variable-for-property: 0
   zero-unit: 1
 
   # Inner Spacing
-  space-after-comma: 0
+  space-after-comma: 1
   space-before-colon: 0
-  space-after-colon: 0
-  space-before-brace: 0
+  space-after-colon: 1
+  space-before-brace: 1
   space-before-bang: 0
   space-after-bang: 0
   space-between-parens: 0
