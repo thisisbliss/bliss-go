@@ -16,8 +16,11 @@ var sass_options = {
 gulp.task('sass', function () {
   return gulp
     .src(input)
-    .pipe(sass(sass_options).on('error', sass.logError))
+    .pipe(sass_lint())
+    .pipe(sass_lint.format())
+    .pipe(sass_lint.failOnError())
     .pipe(autoprefixer())
+    .pipe(sass(sass_options).on('error', sass.logError))
     .pipe(gulp.dest(output));
 });
 
@@ -32,7 +35,7 @@ gulp.task('lint-sass', function () {
 
 gulp.task('watch', function() {
   return gulp
-    .watch(input, ['lint-sass', 'sass'])
+    .watch(input, ['sass'])
     .on('change', function(event) {
       console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
     });
