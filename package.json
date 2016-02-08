@@ -1,0 +1,22 @@
+{
+  "name": "bliss-go",
+  "version": "1.0.0",
+  "description": "Dependencies for the bliss-go theme.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thisisbliss/bliss-go.git"
+  },
+  "author": "Tom Wilks",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thisisbliss/bliss-go/issues"
+  },
+  "homepage": "https://github.com/thisisbliss/bliss-go",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-sass": "^2.2.0",
+    "gulp-sass-lint": "^1.1.1",
+    "sass-lint": "^1.5.0"
+  }
+}
