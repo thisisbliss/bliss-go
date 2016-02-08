@@ -1,0 +1,9 @@
+global:
+  version: 1.x
+  css:
+    theme:
+      css/main.css: {}
+  js:
+    scripts/main.js: {}
+  dependencies:
+    - core/jquery
