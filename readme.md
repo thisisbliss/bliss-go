@@ -53,14 +53,14 @@ Components pertain to Drupal specific elements.
 
 `_tabs.scss` Defines styles for Drupals tab system which contains links to edit pages etc inline on the page.
 
-## Watch and Build
+## Dependencies and Build
 
-BLISS Go comes with two shell scripts that automate certain front-end workflows. 
+BLISS Go comes with two shell scripts that automate certain front-end workflows.
+
+#### Install
+
+`$ ./install.sh` gathers all the dependencies defined in package.json and installs them via npm (node package manager). The watch file will run on completion.
 
 #### Watch
 
-`$ ./watch.sh` will compile Sass and then watch for future changes. It produces an uncompressed CSS file.
-
-#### Build
-
-`$ ./build.sh` will compile Sass to compressed CSS ready for production. It will also run imageoptim on the images directory.
+`$ ./watch.sh` runs a gulp watch task which lints and compiles Sass.
