@@ -80,9 +80,8 @@ Install dependencies from the root of the bliss-go theme:
 ```
 npm install
 ```
-Compile & Watch Sass with Autoprefixr and Sass Lint.
+Default: Compile & Watch Sass with Autoprefixr and Sass Lint.
 From the root of the bliss go theme:
 ```
-gulp watch
+gulp
 ```
-
