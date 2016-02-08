@@ -23,7 +23,8 @@ gulp.task('sass', function () {
 
 // Linting config located in .sass-link.yml
 gulp.task('lint-sass', function () {
-  gulp.src(input)
+  return gulp
+    .src(input)
     .pipe(sass_lint())
     .pipe(sass_lint.format())
     .pipe(sass_lint.failOnError())
