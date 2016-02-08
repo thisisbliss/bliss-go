@@ -10,6 +10,7 @@ if which node >/dev/null; then
   else
     echo "Gulp is not installed globally... installing with sudo..."
     sudo npm install -g gulp
+    ./install.sh
   fi
 else
   echo "Node is not installed. Install from https://nodejs.org/en/ and run again."
