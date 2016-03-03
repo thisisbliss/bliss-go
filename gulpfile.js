@@ -4,9 +4,12 @@ var gulp = require('gulp');
 var sass = require('gulp-sass');
 var autoprefixer = require('gulp-autoprefixer');
 var sass_lint = require('gulp-sass-lint');
+var eslint = require('gulp-eslint');
 
-var input = './css/sass/**/*.scss';
-var output = './css/';
+var styleInput = './css/sass/**/*.scss';
+var styleOutput = './css/';
+
+var scriptInput = './scripts/**/*.js';
 
 var sass_options = {
   errLogToConsole: true,
@@ -15,22 +18,30 @@ var sass_options = {
 
 gulp.task('sass', function () {
   return gulp
-    .src(input)
+    .src(styleInput)
     .pipe(sass_lint())
     .pipe(sass_lint.format())
     .pipe(sass_lint.failOnError())
     .pipe(autoprefixer())
     .pipe(sass(sass_options).on('error', sass.logError))
-    .pipe(gulp.dest(output));
+    .pipe(gulp.dest(styleOutput));
 });
 
 // Linting config located in .sass-link.yml
 gulp.task('lint-sass', function () {
   return gulp
-    .src(input)
+    .src(styleInput)
     .pipe(sass_lint())
     .pipe(sass_lint.format())
     .pipe(sass_lint.failOnError())
+});
+
+gulp.task('lint-js', function () {
+  return gulp
+    .src(scriptInput)
+    .pipe(eslint())
+    .pipe(eslint.format())
+    .pipe(eslint.failOnError())
 });
 
 gulp.task('watch', function() {
@@ -42,4 +53,4 @@ gulp.task('watch', function() {
 });
 
 // Setup the default task order
-gulp.task('default', ['sass', 'watch']);
+gulp.task('default', ['sass',  'watch']);
