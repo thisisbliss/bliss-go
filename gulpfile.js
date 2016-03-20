@@ -36,6 +36,7 @@ gulp.task('lint-sass', function () {
     .pipe(sass_lint.failOnError())
 });
 
+// Linting config located in .eslintrc
 gulp.task('lint-js', function () {
   return gulp
     .src(scriptInput)
@@ -46,7 +47,7 @@ gulp.task('lint-js', function () {
 
 gulp.task('watch', function() {
   return gulp
-    .watch(input, ['sass'])
+    .watch(styleInput, ['sass'])
     .on('change', function(event) {
       console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
     });
@@ -54,3 +55,6 @@ gulp.task('watch', function() {
 
 // Setup the default task order
 gulp.task('default', ['sass',  'watch']);
+
+// Setup link task
+gulp.task('lint', ['lint-sass', 'lint-js']);

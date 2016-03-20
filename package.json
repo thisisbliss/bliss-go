@@ -6,6 +6,10 @@
     "type": "git",
     "url": "https://github.com/thisisbliss/bliss-go.git"
   },
+  "scripts": {
+    "start": "gulp",
+    "lint": "gulp lint"
+  },
   "author": "Tom Wilks",
   "license": "ISC",
   "bugs": {
