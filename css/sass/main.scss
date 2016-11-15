@@ -1,17 +1,13 @@
-@import 'var/_vars.scss';
-@import 'var/_mixins.scss';
+@import 'vendors/normalize';
 
-@import 'base/_reset.scss';
-@import 'base/_styleset.scss';
+@import 'abstracts/variables';
+@import 'abstracts/functions';
+@import 'abstracts/mixins';
+@import 'abstracts/placeholders';
 
-@import 'modules/_buttons.scss';
-@import 'modules/_lists.scss';
-
-@import 'sections/_header.scss';
-@import 'sections/_content.scss';
-@import 'sections/_sidebars.scss';
-@import 'sections/_footer.scss';
-
-@import 'components/_messages.scss';
-@import 'components/_pager.scss';
-@import 'components/_tabs.scss';
+@import 'base/base';
+@import 'base/typography';
+@import 'base/lists';
+@import 'base/media';
+@import 'base/tables';
+@import 'base/forms';

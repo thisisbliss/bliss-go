@@ -15,43 +15,13 @@ BLISS Go ships with a stable Drupal 7 branch (7.x) and a development Drupal 8 br
 
 This will break down the BLISS Go partial structure and explain the purpose of each file.
 
-### Var
-
-The **var** folder contains the projects variables and reusable Sass components such as mixins.
-
-`_vars.scss` defines all the variables for a project. For example colors, font sizes, font families and other reusable declarations.
-
-`_mixins.scss` defines all Sass mixins you might want to add to a project. Mixins can be used to do the heavy lifting of complex CSS declarations like gradients, shadows or functions for adding fallbacks for font sizes.
-
-### Base
-
-The **base** folder defines the basic setup of your CSS styles.
-
-`_reset.css` Imports the popular CSS reset into the document to remove all browser added styles. This file is unlikely to ever change. If you feel like the project does not require such a heavy handed approach consider replaceing this with a Normalise.
-
-`_styleset.scss` This file defines styles for low level HTML elements sich as headings, paragraphs, links, blockquotes etc.
-
-### Modules
-
-In this context modules are small and reusable parts of CSS that can be applied to any element in the HTML document with dictating it's position or size (width/height). Only 2 basic partials are included but add more if the project requires.
-
-`_buttons.scss` Defines general button styles and any button modifiers.
-
-`_lists.scss` Defines general list styles. For example simple lists or block style lists.
-
-### Sections
-
-Sections defines the basic layout structure of the site. Sections are imported in their heirarchy so to maintain the cascade. Add more if needed, for instance if a file is becoming unmaintainable, but rememeber maintain the cascade. Section partials purpose should be clear.
-
-### Components
-
-Components pertain to Drupal specific elements.
-
-`_messages.scss` Defines styles for Drupal rendered messages such as success or error messages.
-
-`_pager.scss` Defines styles for Drupal generated paging styles such as what the views module outputs.
-
-`_tabs.scss` Defines styles for Drupals tab system which contains links to edit pages etc inline on the page.
+- **abstracts**: Contains utility code such as variables, mixins, functions and placeholders.
+- **base**: Contains general, base styles for elements, such as typography and tables.
+- **components**: Contains styles for self contained, reusable and small components or widgets, such as a search form.
+- **layout**: Contains styles for laying out the site and large components such as header, footer and grid.
+- **pages**: Contains styles for specific pages, such as homepage or single blog post.
+- **themes**: Contains styles for different themes. Probably not needed in most projects.
+- **vendors**: Contains vendor code such a normalize or a grid library.
 
 ## Dependencies and Build
 
