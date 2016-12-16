@@ -1,4 +1,3 @@
-var _gaq = _gaq || [];
 (function($){
 
   /**
