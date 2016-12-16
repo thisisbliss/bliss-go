@@ -6,4 +6,5 @@ global:
   js:
     scripts/main.js: {}
   dependencies:
+    - core/drupal
     - core/jquery
