@@ -2,11 +2,13 @@ options:
   formatter: stylish
 files:
   include: '**/*.s+(a|c)ss'
+  ignore: 'css/sass/vendors/**/*.scss'
 rules:
   # Extends
-  extends-before-mixins: 1
+  extends-before-mixins: 0
   extends-before-declarations: 0
   placeholder-in-extend: 0
+  no-extends: 2
 
   # Mixins
   mixins-before-declarations: 1
@@ -14,16 +16,15 @@ rules:
   # Line Spacing
   one-declaration-per-line: 1
   empty-line-between-blocks: 1
-  single-line-per-selector: 0
+  single-line-per-selector: 1
 
   # Disallows
   no-color-keywords: 0
   no-color-literals: 0
   no-css-comments: 0
   no-debug: 0
-  no-duplicate-properties: 0
+  no-duplicate-properties: 1
   no-empty-rulesets: 1
-  no-extends: 0
   no-ids: 1
   no-important: 1
   no-invalid-hex: 0
@@ -46,6 +47,11 @@ rules:
   mixin-name-format: 0
   placeholder-name-format: 0
   variable-name-format: 1
+  pseudo-element: 0
+  class-name-format:
+    - 1
+    - convention: hyphenatedbem
+    - allow-leading-underscore: true
 
   # Style Guide
   border-zero: 0
@@ -60,14 +66,16 @@ rules:
   leading-zero: 0
   nesting-depth: 1
   property-sort-order: 0
-  quotes: 1
+  quotes:
+    - 1
+    - style: double
   shorthand-values: 0
   url-quotes: 1
   variable-for-property: 0
   zero-unit: 1
 
   # Inner Spacing
-  space-after-comma: 1
+  space-after-comma: 0
   space-before-colon: 0
   space-after-colon: 1
   space-before-brace: 1
@@ -76,5 +84,5 @@ rules:
   space-between-parens: 0
 
   # Final Items
-  trailing-semicolon: 0
+  trailing-semicolon: 2
   final-newline: 0
