@@ -1,15 +1,16 @@
 'use strict';
 
+var postcss = require('gulp-postcss');
 var gulp = require('gulp');
 var sass = require('gulp-sass');
-var autoprefixer = require('gulp-autoprefixer');
+var autoprefixer = require('autoprefixer');
 var sass_lint = require('gulp-sass-lint');
 var eslint = require('gulp-eslint');
 
-var styleInput = './css/sass/**/*.scss';
-var styleOutput = './css/';
+var style_input = './css/sass/**/*.scss';
+var style_output = './css/';
 
-var scriptInput = './scripts/**/*.js';
+var script_input = './scripts/**/*.js';
 
 var sass_options = {
   errLogToConsole: true,
@@ -17,20 +18,23 @@ var sass_options = {
 };
 
 gulp.task('sass', function () {
+  var processors = [
+    autoprefixer({browsers: ['last 2 version']}),
+  ];
   return gulp
-    .src(styleInput)
+    .src(style_input)
     .pipe(sass_lint())
     .pipe(sass_lint.format())
     .pipe(sass_lint.failOnError())
-    .pipe(autoprefixer())
     .pipe(sass(sass_options).on('error', sass.logError))
-    .pipe(gulp.dest(styleOutput));
+    .pipe(postcss(processors))
+    .pipe(gulp.dest(style_output));
 });
 
 // Linting config located in .sass-link.yml
 gulp.task('lint-sass', function () {
   return gulp
-    .src(styleInput)
+    .src(style_input)
     .pipe(sass_lint())
     .pipe(sass_lint.format())
     .pipe(sass_lint.failOnError())
@@ -39,7 +43,7 @@ gulp.task('lint-sass', function () {
 // Linting config located in .eslintrc
 gulp.task('lint-js', function () {
   return gulp
-    .src(scriptInput)
+    .src(script_input)
     .pipe(eslint())
     .pipe(eslint.format())
     .pipe(eslint.failOnError())
@@ -47,14 +51,14 @@ gulp.task('lint-js', function () {
 
 gulp.task('watch', function() {
   return gulp
-    .watch(styleInput, ['sass'])
+    .watch(style_input, ['sass'])
     .on('change', function(event) {
       console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
     });
 });
 
 // Setup the default task order
-gulp.task('default', ['sass',  'watch']);
+gulp.task('default', ['sass', 'watch']);
 
-// Setup link task
+// Setup lint task
 gulp.task('lint', ['lint-sass', 'lint-js']);
