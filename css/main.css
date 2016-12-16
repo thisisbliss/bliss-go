@@ -1,0 +1,104 @@
+html {
+  box-sizing: border-box;
+}
+
+* {
+  box-sizing: inherit;
+}
+
+*:before, *:after {
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 1.6rem;
+  line-height: 1.5;
+  color: #433f43;
+}
+
+h1 {
+  font-size: 2.027rem;
+}
+
+h2 {
+  font-size: 1.8rem;
+}
+
+h3 {
+  font-size: 1.602rem;
+}
+
+h4 {
+  font-size: 1.424rem;
+}
+
+h5 {
+  font-size: 1.266rem;
+}
+
+h6 {
+  font-size: 1.125rem;
+}
+
+a {
+  color: #ef5e5f;
+  text-decoration: none;
+}
+
+img,
+picture {
+  max-width: 100%;
+}
+
+table {
+  border-collapse: collapse;
+  table-layout: fixed;
+  width: 100%;
+}
+
+th {
+  font-weight: 600;
+  padding: 1rem;
+}
+
+td {
+  padding: 1rem;
+}
+
+tr,
+td,
+th {
+  vertical-align: middle;
+}
+
+[type="color"],
+[type="date"],
+[type="datetime"],
+[type="datetime-local"],
+[type="email"],
+[type="month"],
+[type="number"],
+[type="password"],
+[type="search"],
+[type="tel"],
+[type="text"],
+[type="time"],
+[type="url"],
+[type="week"],
+textarea,
+[multiple] {
+  padding: 1rem;
+}
+
+textarea {
+  resize: vertical;
+}
+
+label {
+  display: block;
+}
