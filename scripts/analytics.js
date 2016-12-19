@@ -1,4 +1,4 @@
-(function($){
+(function ($){
 
   /**
   * An example segment of code to execute
