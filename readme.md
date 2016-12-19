@@ -1,3 +1,5 @@
+![Bliss Go](screenshot.png "Bliss Go")
+
 #Bliss Go 8
 
 The leanest, sassiest and quickest Drupal quickstart framework.
