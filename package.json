@@ -1,7 +1,7 @@
 {
   "name": "bliss-go",
   "version": "1.0.0",
-  "description": "Dependencies for the bliss-go theme.",
+  "description": "A bare starting point for Drupal 8.",
   "repository": {
     "type": "git",
     "url": "https://github.com/thisisbliss/bliss-go.git"
