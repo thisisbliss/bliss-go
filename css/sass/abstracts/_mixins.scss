@@ -6,12 +6,14 @@
   left: 0;
 }
 
-// z-index
-// Ordered from layer-one to layer-six.
-// Layer-one is equal to the highest z-index.
-// Layer-six is equal to the lowest z-index.
-// For example, to set highest z-index use:
-// z-index: z-index(layer-one);
+/**
+  z-index
+  Ordered from layer-one to layer-six.
+  Layer-one is equal to the highest z-index.
+  Layer-six is equal to the lowest z-index.
+  For example, to set highest z-index use:
+  z-index: z-index(layer-one);
+**/
 $zindex: (
   layer-one   : 5,
   layer-two   : 4,
