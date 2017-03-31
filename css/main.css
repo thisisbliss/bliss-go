@@ -1,9 +1,11 @@
-.clearfix:after {
-  content: " ";
-  display: block;
-  clear: both;
-}
-
+/**
+  z-index
+  Ordered from layer-one to layer-six.
+  Layer-one is equal to the highest z-index.
+  Layer-six is equal to the lowest z-index.
+  For example, to set highest z-index use:
+  z-index: z-index(layer-one);
+**/
 html {
   box-sizing: border-box;
 }
