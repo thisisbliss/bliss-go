@@ -8,7 +8,9 @@
   },
   "scripts": {
     "start": "gulp",
-    "lint": "gulp lint"
+    "watch": "gulp",
+    "build": "gulp sass",
+    "test": "gulp lint"
   },
   "author": "Tom Wilks",
   "license": "ISC",
