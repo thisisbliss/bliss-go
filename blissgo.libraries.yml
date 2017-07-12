@@ -4,7 +4,7 @@ global:
     theme:
       css/main.css: {}
   js:
-    scripts/main.js: {}
+    scripts/bundle.js: {}
   dependencies:
     - core/drupal
     - core/jquery
