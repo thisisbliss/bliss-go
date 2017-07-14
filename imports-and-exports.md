@@ -51,4 +51,4 @@ import * as someBehavior from './someBehavior';
 someBehavior.someExport();
 ```
 
-For other export options, see [MDN](https://developer.mozilla.org/en/docs/web/javascript/reference/statements/export).
+For other import options, see [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import).
