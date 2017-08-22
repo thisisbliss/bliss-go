@@ -1,16 +1,16 @@
-// import welcomeBanner from 'show-me.js', notice the lack of curcly braces,
-// meaning we're importing the default export.
-import welcomeBanner from './show-me';
+// Import the default export, which happens to match Drupal behavior
+// expectation, from './behavior-example.js'
+import myBehavior from './behavior-example';
 
-// import sanityCheck from 'show-me.js', notice the curly braces, meaning we're
-// importing a non-default export.
-import { sanityCheck } from './show-me';
+// Import non-default exports from './another-modules.ks'
+import { PI, double } from './another-module';
 
-// sanityCheck is just a function, we can use it like any other function
-sanityCheck();
+/**
+ * A regular old Drupal behavior imported from './behavior-example.js'. Although
+ * there is no hard requirement to put behaviours in their own modules, in most
+ * cases this will be the best option to keep related code modularized.
+ */
+Drupal.behaviors.myBehavior = myBehavior;
 
-// welcomeBanner is a drupal behavior object, which means we can simply add it
-// to the behaviors object and all is well
-Drupal.behaviors = {
-  welcomeBanner: welcomeBanner
-}
+// Go ahead and use the imports
+console.log(double(PI));
