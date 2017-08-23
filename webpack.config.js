@@ -18,5 +18,27 @@ module.exports = {
   output: {
     filename: '[name].js',
     path: path.resolve(__dirname, 'scripts')
+  },
+
+  /**
+   * Webpack is only responsible for bundling. Any other functionality comes
+   * from modules, usually loaders.
+   */
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: "eslint-loader",
+        options: {
+          failOnWarning: false,
+          failOnError: false,
+          // There is an issue with the loader, causing all errors to stop
+          // webpack from compiling. This option will force errors to be emitted
+          // as warnings, allowing webpack to continue bundling.
+          emitWarning: true
+        }
+      }
+    ]
   }
 }

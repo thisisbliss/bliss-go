@@ -3,7 +3,7 @@
 import myBehavior from './behavior-example';
 
 // Import non-default exports from './another-modules.ks'
-import { PI, double } from './another-module';
+import {PI, double} from './another-module';
 
 /**
  * A regular old Drupal behavior imported from './behavior-example.js'. Although
@@ -12,5 +12,4 @@ import { PI, double } from './another-module';
  */
 Drupal.behaviors.myBehavior = myBehavior;
 
-// Go ahead and use the imports
-console.log(double(PI));
+var doulblePi = double(PI);
