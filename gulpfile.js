@@ -7,7 +7,7 @@ var autoprefixer = require('autoprefixer');
 var sass_lint = require('gulp-sass-lint');
 var eslint = require('gulp-eslint');
 var webpack = require('webpack-stream');
-var webpacgConfig = require('./webpack.config');
+var webpackConfig = require('./webpack.config');
 
 var style_input = './css/sass/**/*.scss';
 var style_output = './css/';
@@ -33,6 +33,11 @@ gulp.task('sass', function () {
     .pipe(gulp.dest(style_output));
 });
 
+gulp.task('scripts', function () {
+  return webpack(webpackConfig)
+    .pipe(gulp.dest(webpackConfig.output.path));
+});
+
 // Linting config located in .sass-link.yml
 gulp.task('lint-sass', function () {
   return gulp
@@ -42,7 +47,7 @@ gulp.task('lint-sass', function () {
     .pipe(sass_lint.failOnError())
 });
 
-gulp.task('watch', function() {
+gulp.task('watch:sass', function() {
   return gulp
     .watch(style_input, ['sass'])
     .on('change', function(event) {
@@ -50,8 +55,23 @@ gulp.task('watch', function() {
     });
 });
 
-// Setup the default task order
-gulp.task('default', ['sass']);
+gulp.task('watch:scripts', function () {
+  var config = Object.assign({}, webpackConfig, { watch: true });
+  return webpack(config).pipe(gulp.dest(config.output.path));
+});
+
+
+// Watch for changes
+gulp.task('watch', ['watch:sass', 'watch:scripts']);
+
+// Build dist output
+gulp.task('build', ['sass', 'scripts']);
 
 // Setup lint task
-gulp.task('lint', ['lint-sass', 'lint-js']);
+//TODO: Remove this and have it as part of the sass build
+// process the same was JS linting is part of the bundling process?
+gulp.task('lint', ['lint-sass']);
+
+
+// Default task will be the watch task for ease of use
+gulp.task('default', ['watch']);
