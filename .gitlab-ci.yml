@@ -9,4 +9,4 @@ before_script:
 mirror:
   stage: deploy
   script:
-    - git push --mirror https://GITHUB_USERNAME:GITHUB_PASSWORD@github.com/thisisbliss/bliss-go.git
+    - git push --mirror https://$GITHUB_USERNAME:$GITHUB_PASSWORD@github.com/thisisbliss/bliss-go.git
