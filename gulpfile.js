@@ -5,14 +5,11 @@ var gulp = require('gulp');
 var sass = require('gulp-sass');
 var autoprefixer = require('autoprefixer');
 var sass_lint = require('gulp-sass-lint');
-var eslint = require('gulp-eslint');
 var webpack = require('webpack-stream');
 var webpackConfig = require('./webpack.config');
 
 var style_input = './css/sass/**/*.scss';
 var style_output = './css/';
-
-var script_input = './scripts/**/*.js';
 
 var sass_options = {
   errLogToConsole: true,
