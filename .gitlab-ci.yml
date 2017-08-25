@@ -1,5 +1,10 @@
+image: docker
+
 stages:
   - deploy
+
+before_script:
+  - apk update && apk add git
 
 mirror:
   stage: deploy
