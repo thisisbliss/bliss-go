@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
   /**
@@ -16,8 +17,8 @@ module.exports = {
    * specified above, in this case, app.js
    */
   output: {
-    filename: '[name].js',
-    path: path.resolve(__dirname, 'scripts')
+    path: path.resolve(__dirname, 'scripts'),
+    filename: '[name].js'
   },
 
   /**
@@ -40,5 +41,21 @@ module.exports = {
         }
       }
     ]
-  }
+  },
+
+  /**
+   * Plugins add functionality to webpack.
+   */
+  plugins: [
+    new webpack.optimize.UglifyJsPlugin({
+      sourceMap: true
+    })
+  ],
+
+  /**
+   * `devtool` determines the type of sourcemaps, if any, we want to output. This
+   * is generally a good idea, as tracking down bugs without a sourcemap in a
+   * bundled file is not fun.
+   */
+  devtool: 'source-map'
 }
