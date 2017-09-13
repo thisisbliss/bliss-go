@@ -53,5 +53,18 @@ module.exports = {
    * is generally a good idea, as tracking down bugs without a sourcemap in a
    * bundled file is not fun.
    */
-  devtool: 'source-map'
+  devtool: 'source-map',
+
+  externals: {
+    drupal: 'Drupal',
+    'drupal-settings': 'drupalSettings',
+    'drupal-translations': 'drupalTranslations',
+    domready: 'domready',
+    jquery: 'jQuery',
+    'underscore': '_',
+    'match-media': 'matchMedia',
+    backbone: 'Backbone',
+    modernizr: 'Modernizr',
+    ckeditor: 'CKEDITOR'
+  }
 }

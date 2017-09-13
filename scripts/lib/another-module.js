@@ -1,10 +1,10 @@
 // Non-default variable export
-export var PI = 3.14159265359;
+export var PI = 3.14159265359
 
 // Non-default function export
 export var double = function (n) {
-  return n * 2;
-};
+  return n * 2
+}
 
 /**
  * Any function, variable, array, object etc. can be exported as both
@@ -12,4 +12,4 @@ export var double = function (n) {
  */
 export default {
   foo: 'bar'
-};
+}
