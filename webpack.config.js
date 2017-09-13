@@ -1,5 +1,5 @@
-const path = require('path');
-const webpack = require('webpack');
+const path = require('path')
+const webpack = require('webpack')
 
 module.exports = {
   /**
@@ -28,17 +28,13 @@ module.exports = {
   module: {
     rules: [
       {
+        enforce: 'pre',
         test: /\.js$/,
-        exclude: /node_modules/,
-        loader: "eslint-loader",
-        options: {
-          failOnWarning: false,
-          failOnError: false,
-          // There is an issue with the loader, causing all errors to stop
-          // webpack from compiling. This option will force errors to be emitted
-          // as warnings, allowing webpack to continue bundling.
-          emitWarning: true
-        }
+        loader: 'standard-loader',
+        include: [
+          path.resolve(__dirname, 'gulpfile.js'),
+          path.resolve(__dirname, 'scripts/lib')
+        ]
       }
     ]
   },
