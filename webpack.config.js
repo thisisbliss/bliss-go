@@ -35,6 +35,16 @@ module.exports = {
           path.resolve(__dirname, 'gulpfile.js'),
           path.resolve(__dirname, 'scripts/lib')
         ]
+      },
+      {
+        test: /\.js$/,
+        loader: 'babel-loader',
+        include: [
+          path.resolve(__dirname, 'scripts/lib')
+        ],
+        options: {
+          presets: ['env']
+        }
       }
     ]
   },

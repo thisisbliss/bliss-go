@@ -14,5 +14,5 @@ import {PI, double} from './another-module'
  */
 Drupal.behaviors.myBehavior = myBehavior
 
-var doulblePi = double(PI)
+const doulblePi = double(PI)
 console.log(doulblePi)
