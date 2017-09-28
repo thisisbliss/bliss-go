@@ -1,0 +1,9 @@
+<?php
+
+/* 
+  Preprocess tab items/links
+*/
+function blissgo_preprocess_menu_local_task(&$variables) {
+    // Add BEM class to link
+    $variables['link']['#options']['attributes']['class'][] = 'tab__link';
+}
