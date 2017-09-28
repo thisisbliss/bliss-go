@@ -7,3 +7,14 @@ function blissgo_preprocess_menu_local_task(&$variables) {
     // Add BEM class to link
     $variables['link']['#options']['attributes']['class'][] = 'tab__link';
 }
+
+/* 
+  Function to retrieve English node alias only 
+*/
+function _blissgo_current_path() {
+  // Get the original un-aliased node path e.g. node/1
+  $original_path = \Drupal::service('path.current')->getPath();
+  // Get current alias via node path and pass in the language we want to load it from
+  $current_path = \Drupal::service('path.alias_manager')->getAliasByPath($original_path, 'en');
+  return $current_path;
+}
