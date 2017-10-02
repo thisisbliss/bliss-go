@@ -10,4 +10,4 @@ mirror:
   - echo "${SSH_PRIVATE_KEY}" > "${HOME}/.ssh/id_rsa"
   - chmod 700 "${HOME}/.ssh/id_rsa"
   - echo "${SSH_HOST_KEY}" > "${HOME}/.ssh/known_hosts"
-  - git push --mirror git@github.com/thisisbliss/bliss-go.git
+  - git push --mirror git@github.com:thisisbliss/bliss-go.git
