@@ -1,12 +1,13 @@
-image: docker
+image: indiehosters/git
 
 stages:
   - deploy
 
-before_script:
-  - apk update && apk add git
-
 mirror:
   stage: deploy
   script:
-    - git push --mirror https://$GITHUB_USERNAME:$GITHUB_PASSWORD@github.com/thisisbliss/bliss-go.git
+  - mkdir "${HOME}/.ssh"
+  - echo "${SSH_PRIVATE_KEY}" > "${HOME}/.ssh/id_rsa"
+  - chmod 700 "${HOME}/.ssh/id_rsa"
+  - echo "${SSH_HOST_KEY}" > "${HOME}/.ssh/known_hosts"
+  - git push --mirror git@github.com:thisisbliss/bliss-go.git
