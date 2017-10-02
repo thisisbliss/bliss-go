@@ -1,4 +1,4 @@
-variables:
+image: indiehosters/git
 
 stages:
   - deploy
