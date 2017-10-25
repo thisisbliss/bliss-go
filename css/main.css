@@ -7,15 +7,18 @@
   z-index: z-index(layer-one);
 **/
 html {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 * {
-  box-sizing: inherit;
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit;
 }
 
 *:before, *:after {
-  box-sizing: inherit;
+  -webkit-box-sizing: inherit;
+          box-sizing: inherit;
 }
 
 html {
@@ -61,6 +64,22 @@ a {
 img,
 picture {
   max-width: 100%;
+}
+
+/* Image optimisation example */
+.logo {
+  width: 11.3rem;
+  height: 7.3rem;
+  margin-top: 1.6rem;
+  background: url("/themes/bliss-go/images/svg-example.svg") no-repeat;
+  background-size: 100%;
+  text-indent: -9999rem;
+  overflow: hidden;
+  display: block;
+}
+
+.logo--imagemin {
+  background: url("/themes/bliss-go/images-imagemin/svg-example.svg") no-repeat;
 }
 
 table {

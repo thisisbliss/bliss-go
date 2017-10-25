@@ -17,6 +17,11 @@ var sass_options = {
   outputStyle: 'expanded'
 };
 
+var changed = require('gulp-changed');
+var imagemin = require('gulp-imagemin');
+var imagemin_input = './images/*';
+var imagemin_output = './images-imagemin/';
+
 gulp.task('sass', function () {
   var processors = [
     autoprefixer({browsers: ['last 2 version']}),
@@ -47,6 +52,27 @@ gulp.task('lint-js', function () {
     .pipe(eslint())
     .pipe(eslint.format())
     .pipe(eslint.failOnError())
+});
+
+// Image min saved 28.8KB - 12%
+// JPG saved 4.49 KB - 2.8%
+// png saved 19.7 KB - 27.1%
+// svg saved 4.57 KB - 50.3%
+
+gulp.task('image-min', function() {
+  return gulp 
+  .src(imagemin_input)
+  .pipe(changed(imagemin_output))
+  .pipe(imagemin([
+    imagemin.jpegtran(),
+    imagemin.optipng(),
+    imagemin.svgo({
+      plugins: [
+        {cleanupIDs: false}
+      ]
+    })
+  ]))
+  .pipe(gulp.dest(imagemin_output));
 });
 
 gulp.task('watch', function() {
