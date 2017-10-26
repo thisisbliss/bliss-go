@@ -6,32 +6,20 @@ var sass = require('gulp-sass');
 var autoprefixer = require('autoprefixer');
 var sass_lint = require('gulp-sass-lint');
 var eslint = require('gulp-eslint');
+var imagemin = require('gulp-imagemin');
 
 var style_input = './css/sass/**/*.scss';
 var style_output = './css/';
 
 var script_input = './scripts/**/*.js';
 
+var image_input = './images/*';
+var image_output = './images/';
+
 var sass_options = {
   errLogToConsole: true,
   outputStyle: 'expanded'
 };
-
-// Imagemin 
-var changed = require('gulp-changed');
-var imagemin = require('gulp-imagemin');
-var imagemin_input = './images/*.{svg,jpg}';
-var imagemin_output = './images-imagemin/';
-var imageminquant_in = './images/*.png';
-var imageminquant_out = './images-imageminquant';
-
-// gulp image 
-var image = require('gulp-image');
-var gulpimage_output = './images-gulpimage/';
-
-var imageminPngquant = require('imagemin-pngquant');
-
-
 
 gulp.task('sass', function () {
   var processors = [
@@ -65,50 +53,21 @@ gulp.task('lint-js', function () {
     .pipe(eslint.failOnError())
 });
 
-// Image min saved 35.6KB - 14.7%
-// JPG saved 11.3 KB - 7%
-// png saved 19.7 KB - 27.1%
-// svg saved 4.57 KB - 50.3%
-
-gulp.task('image-min', function() {
+// Run this task to compress images
+gulp.task('image', function() {
   return gulp 
-  .src(imagemin_input)
-  .pipe(changed(imagemin_output))
+  .src(image_input)
   .pipe(imagemin([
     imagemin.jpegtran({progressive: true}),
+    imagemin.optipng(),
     imagemin.svgo({
-      plugins: [
-        {cleanupIDs: false}
-      ]
+      plugins: [{cleanupIDs: false}]
     })
   ],
   {
     verbose: true
   }))
-  .pipe(gulp.dest(imagemin_output));
-});
-
-gulp.task('image-min-quant', ['image-min'], function() {
-  return gulp 
-  .src(imageminquant_in)
-  .pipe(imagemin([imageminPngquant()], {verbose: true}))
-  .pipe(gulp.dest(imagemin_output))
-});
-
-// Gulp Image 
-// png saved 53.12KB (before 71.09 KB after 17.97 KB)
-// svg saved 4.73KB (before 8.86KB after 4.14KB)
-// Relies on external dependency for Jpeg, devdependencies out of date
-
-gulp.task('image-gulp', function() {
-  return gulp
-  .src(imagemin_input)
-  .pipe(changed(gulpimage_output))
-  .pipe(image({
-    pngquant: true,
-    svgo: true
-  }))
-  .pipe(gulp.dest(gulpimage_output));
+  .pipe(gulp.dest(image_output));
 });
 
 gulp.task('watch', function() {
@@ -120,7 +79,7 @@ gulp.task('watch', function() {
 });
 
 // Setup the default task order
-gulp.task('default', ['sass', 'watch']);
+gulp.task('default', ['image', 'sass', 'watch']);
 
 // Setup lint task
 gulp.task('lint', ['lint-sass', 'lint-js']);

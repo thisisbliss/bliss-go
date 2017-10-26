@@ -2,24 +2,3 @@ img,
 picture {
   max-width: 100%;
 }
-
-/* Image optimisation example */
-
-.logo {
-  width: 11.3rem;
-  height: 7.3rem;
-  margin-top: 1.6rem;
-  background: url("/themes/bliss-go/images/svg-example.svg") no-repeat;
-  background-size: 100%;
-  text-indent: -9999rem;
-  overflow: hidden;
-  display: block;
-}
-
-.logo--imagemin {
-  background: url("/themes/bliss-go/images-imagemin/svg-example.svg") no-repeat;
-}
-
-.logo--gulpimage {
-  background: url("/themes/bliss-go/images-gulpimage/svg-example.svg") no-repeat;
-}
