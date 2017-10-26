@@ -20,12 +20,16 @@ var sass_options = {
 // Imagemin 
 var changed = require('gulp-changed');
 var imagemin = require('gulp-imagemin');
-var imagemin_input = './images/*';
+var imagemin_input = './images/*.{svg,jpg}';
 var imagemin_output = './images-imagemin/';
+var imageminquant_in = './images/*.png';
+var imageminquant_out = './images-imageminquant';
 
 // gulp image 
 var image = require('gulp-image');
 var gulpimage_output = './images-gulpimage/';
+
+var imageminPngquant = require('imagemin-pngquant');
 
 
 
@@ -72,14 +76,23 @@ gulp.task('image-min', function() {
   .pipe(changed(imagemin_output))
   .pipe(imagemin([
     imagemin.jpegtran({progressive: true}),
-    imagemin.optipng(),
     imagemin.svgo({
       plugins: [
         {cleanupIDs: false}
       ]
     })
-  ]))
+  ],
+  {
+    verbose: true
+  }))
   .pipe(gulp.dest(imagemin_output));
+});
+
+gulp.task('image-min-quant', ['image-min'], function() {
+  return gulp 
+  .src(imageminquant_in)
+  .pipe(imagemin([imageminPngquant()], {verbose: true}))
+  .pipe(gulp.dest(imagemin_output))
 });
 
 // Gulp Image 
