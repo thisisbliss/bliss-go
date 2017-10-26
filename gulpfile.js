@@ -61,8 +61,8 @@ gulp.task('lint-js', function () {
     .pipe(eslint.failOnError())
 });
 
-// Image min saved 28.8KB - 12%
-// JPG saved 4.49 KB - 2.8%
+// Image min saved 35.6KB - 14.7%
+// JPG saved 11.3 KB - 7%
 // png saved 19.7 KB - 27.1%
 // svg saved 4.57 KB - 50.3%
 
@@ -71,7 +71,7 @@ gulp.task('image-min', function() {
   .src(imagemin_input)
   .pipe(changed(imagemin_output))
   .pipe(imagemin([
-    imagemin.jpegtran(),
+    imagemin.jpegtran({progressive: true}),
     imagemin.optipng(),
     imagemin.svgo({
       plugins: [
