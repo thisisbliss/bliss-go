@@ -7,14 +7,17 @@ var autoprefixer = require('autoprefixer');
 var sass_lint = require('gulp-sass-lint');
 var eslint = require('gulp-eslint');
 var imagemin = require('gulp-imagemin');
+var imageminPngquant = require('imagemin-pngquant');
 
 var style_input = './css/sass/**/*.scss';
 var style_output = './css/';
 
 var script_input = './scripts/**/*.js';
 
-var image_input = './images/*';
-var image_output = './images/';
+var image_input = './images/*.{svg,jpg}';
+var image_input_png = './images/*.png';
+// var image_output = './images/';
+var image_output = './images/imageminpngquant/';
 
 var sass_options = {
   errLogToConsole: true,
@@ -54,20 +57,28 @@ gulp.task('lint-js', function () {
 });
 
 // Run this task to compress images
-gulp.task('image', function() {
+gulp.task('image-jpeg-svg', function() {
   return gulp 
   .src(image_input)
   .pipe(imagemin([
     imagemin.jpegtran({progressive: true}),
-    imagemin.optipng(),
     imagemin.svgo({
-      plugins: [{cleanupIDs: false}]
+      plugins: [
+        {cleanupIDs: false}
+      ]
     })
   ],
   {
     verbose: true
   }))
   .pipe(gulp.dest(image_output));
+});
+
+gulp.task('image', ['image-jpeg-svg'], function() {
+  return gulp 
+  .src(image_input_png)
+  .pipe(imagemin([imageminPngquant()], {verbose: true}))
+  .pipe(gulp.dest(image_output))
 });
 
 gulp.task('watch', function() {
