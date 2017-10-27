@@ -17,7 +17,7 @@ var script_input = './scripts/**/*.js';
 var image_input = './images/*.{svg,jpg}';
 var image_input_png = './images/*.png';
 // var image_output = './images/';
-var image_output = './images/imageminpngquant/';
+var image_output = './images/';
 
 var sass_options = {
   errLogToConsole: true,
@@ -59,26 +59,19 @@ gulp.task('lint-js', function () {
 // Run this task to compress images
 gulp.task('image-jpeg-svg', function() {
   return gulp 
-  .src(image_input)
-  .pipe(imagemin([
-    imagemin.jpegtran({progressive: true}),
-    imagemin.svgo({
-      plugins: [
-        {cleanupIDs: false}
-      ]
-    })
-  ],
-  {
-    verbose: true
-  }))
-  .pipe(gulp.dest(image_output));
+    .src(image_input)
+    .pipe(imagemin([
+      imagemin.jpegtran({progressive: true}),
+      imagemin.svgo({plugins: [{cleanupIDs: false}]})
+    ]))
+    .pipe(gulp.dest(image_output));
 });
 
 gulp.task('image', ['image-jpeg-svg'], function() {
   return gulp 
-  .src(image_input_png)
-  .pipe(imagemin([imageminPngquant()], {verbose: true}))
-  .pipe(gulp.dest(image_output))
+    .src(image_input_png)
+    .pipe(imagemin([imageminPngquant()]))
+    .pipe(gulp.dest(image_output))
 });
 
 gulp.task('watch', function() {
