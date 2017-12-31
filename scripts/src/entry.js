@@ -1,5 +1,4 @@
 import Drupal from 'drupal'
-import jQuery from 'jquery'
 
 Drupal.behaviors.greeting = {
   attach: function (context, settings) {

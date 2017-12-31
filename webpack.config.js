@@ -33,7 +33,7 @@ module.exports = {
         loader: 'standard-loader',
         include: [
           path.resolve(__dirname, 'gulpfile.js'),
-          path.resolve(__dirname, 'scripts/lib')
+          path.resolve(__dirname, 'scripts/src')
         ]
       },
       {
