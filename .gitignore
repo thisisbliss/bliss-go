@@ -4,7 +4,8 @@ node_modules/*
 *.map
 
 # Ignore distribution files
-scripts
-!scripts/lib
-css
-!css/sass
+# Edit: Leave this in until there's a reason to remove them
+# scripts
+# !scripts/src
+# css
+# !css/sass

@@ -9,7 +9,7 @@ module.exports = {
    * More info: https://webpack.js.org/concepts/output/#multiple-entry-points
    */
   entry: {
-    app: './scripts/lib/entry.js'
+    app: './scripts/src/entry.js'
   },
 
   /**
@@ -48,15 +48,6 @@ module.exports = {
       }
     ]
   },
-
-  /**
-   * Plugins add functionality to webpack.
-   */
-  plugins: [
-    new webpack.optimize.UglifyJsPlugin({
-      sourceMap: true
-    })
-  ],
 
   /**
    * `devtool` determines the type of sourcemaps, if any, we want to output. This
