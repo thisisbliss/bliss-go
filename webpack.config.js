@@ -59,11 +59,11 @@ module.exports = {
    * Externals are used to tell Webpack and/or linting that we expect a variable to
    * exist in the global scope. This can not be linted, as it is outside of webpacks
    * module scope, but it will stop linting from throwing errors relating to missing
-   * modules and will emaulte importing in webpack.
+   * modules and will emulate importing in webpack.
    *
    * e.g. We have access to Drupal in the globl scope, but for webpack and linting to
    * know about this, we have to "pretend" to import it as follows:
-   * import Drupal from 'drupal
+   * import Drupal from 'drupal'
    *
    * other examples:
    * import drupalTranslations from 'drupal-translations'
