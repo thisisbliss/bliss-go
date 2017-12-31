@@ -75,7 +75,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 __WEBPACK_IMPORTED_MODULE_0_drupal___default.a.behaviors.greeting = {
   attach: function (context, settings) {
-    console.log('Hello, Drupal!');
+    console.log('Hello, Drupal!')
   }
 }
 

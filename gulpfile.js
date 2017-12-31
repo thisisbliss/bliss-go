@@ -8,7 +8,7 @@ var sassLint = require('gulp-sass-lint')
 var webpack = require('webpack-stream')
 var webpackConfig = require('./webpack.config')
 
-var styleInput = './css/sass/**/*.scss'
+var styleInput = './css/src/**/*.scss'
 var styleOutput = './css/'
 
 var sassOptions = {
