@@ -1,7 +1,9 @@
 import Drupal from 'drupal'
+import $ from 'jquery'
 
 Drupal.behaviors.greeting = {
   attach: function (context, settings) {
-    console.log('Hello, Drupal!')
+    const greeting = 'Hello, Drupal!'
+    console.log(greeting)
   }
 }
