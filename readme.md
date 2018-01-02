@@ -1,6 +1,6 @@
-![Bliss Go](screenshot.png "Bliss Go")
+<!-- ![Bliss Go](screenshot.png "Bliss Go") -->
 
-# Bliss Go 8
+# Bliss Go
 
 The leanest, sassiest and quickest Drupal quickstart framework.
 
@@ -14,7 +14,7 @@ To get started **copy** the cloned folder to your projects `/themes` folder. It'
 ## Installation
 
 ### Prerequisites
-- Latest LTS version of [Node](https://nodejs.org/en/)
+- NVM
 
 ### Install dependencies
 1. Ensure you are using the latest LTS version of Node. You can verify this by checking the latest [LTS release](https://nodejs.org/en/) and comparing to the output of the `node -v` command.
