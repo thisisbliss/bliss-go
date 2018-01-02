@@ -1,5 +1,3 @@
-<!-- ![Bliss Go](screenshot.png "Bliss Go") -->
-
 # Bliss Go
 
 The leanest, sassiest and quickest Drupal quickstart framework.
@@ -17,8 +15,8 @@ To get started **copy** the cloned folder to your projects `/themes` folder. It'
 - NVM
 
 ### Install dependencies
-1. Ensure you are using the latest LTS version of Node. You can verify this by checking the latest [LTS release](https://nodejs.org/en/) and comparing to the output of the `node -v` command.
-2. Run the `npm install` command in the root directory of the theme.
+1. Make sure you have the correct version of Node. This can be installed for you using NVM by cd-ing in to the theme directory and running `nvm install` followed by `nvm use`.
+2. Run the `npm install` command in the theme directory.
 
 If you have previously installed the dependencies using a different version of Node, be sure to delete the `node_modules` directory prior to installation. This will help avoid any incompatibility issues between different versions of nodes, particularly in the case of native extensions.
 
@@ -35,9 +33,9 @@ Bliss go makes use of various NPM scripts to make it easy to get up and running.
 
 ## Linting
 
-Bliss go makes use of various quality control tools, including linters which are responsible for checking code follows a standard style and format. You can view the rules enforced for styles in `.sass-lint.yml` and rules enforced for scripts in `.eslintrc`. 
+Bliss go makes use of various quality control tools, including linters which are responsible for checking code follows a standard style and format. You can view the rules enforced for styles in `.sass-lint.yml`. Javascript linting is handled by Standard, which has no configuration. 
 
-For more information, refer to the [sass-lint](https://github.com/sasstools/sass-lint) and [eslint](https://eslint.org/) documentation.
+For more information, refer to the [sass-lint](https://github.com/sasstools/sass-lint) and [Standard](https://standardjs.com/) documentation.
 
 ## Help
 
