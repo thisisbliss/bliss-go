@@ -19,10 +19,10 @@
   },
   "homepage": "https://github.com/thisisbliss/bliss-go",
   "devDependencies": {
+    "@babel/core": "^7.0.0-beta.36",
+    "@babel/preset-env": "^7.0.0-beta.36",
     "autoprefixer": "^6.7.7",
-    "babel-core": "^6.26.0",
-    "babel-loader": "^7.1.2",
-    "babel-preset-env": "^1.6.0",
+    "babel-loader": "^8.0.0-beta.0",
     "gulp": "^3.9.1",
     "gulp-postcss": "^6.4.0",
     "gulp-sass": "^3.1.0",

@@ -39,10 +39,10 @@ module.exports = {
         test: /\.js$/,
         loader: 'babel-loader',
         include: [
-          path.resolve(__dirname, 'scripts/lib')
+          path.resolve(__dirname, 'scripts/src')
         ],
         options: {
-          presets: ['env']
+          presets: ['@babel/preset-env']
         }
       }
     ]
