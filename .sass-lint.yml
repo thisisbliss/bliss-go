@@ -2,7 +2,7 @@ options:
   formatter: stylish
 files:
   include: '**/*.s+(a|c)ss'
-  ignore: 'css/sass/vendors/**/*.scss'
+  ignore: 'css/src/vendors/**/*.scss'
 rules:
   # Extends
   extends-before-mixins: 0

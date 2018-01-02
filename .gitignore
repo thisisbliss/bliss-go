@@ -1,4 +1,10 @@
 # Ignore Sass cache
 .sass-cache*
 node_modules/*
-*.map
+
+# Ignore distribution files
+# Edit: Leave this in until there's a reason to remove them
+# scripts
+# !scripts/src
+# css
+# !css/sass
