@@ -19,12 +19,19 @@
   },
   "homepage": "https://github.com/thisisbliss/bliss-go",
   "devDependencies": {
+<<<<<<< HEAD
+    "autoprefixer": "^7.1.2",
+    "gulp": "^3.9.1",
+    "gulp-eslint": "^4.0.0",
+    "gulp-postcss": "^7.0.0",
+=======
     "@babel/core": "^7.0.0-beta.36",
     "@babel/preset-env": "^7.0.0-beta.36",
     "autoprefixer": "^6.7.7",
     "babel-loader": "^8.0.0-beta.0",
     "gulp": "^3.9.1",
     "gulp-postcss": "^6.4.0",
+>>>>>>> 6-add-webpack-bundling-for-js-files
     "gulp-sass": "^3.1.0",
     "gulp-sass-lint": "^1.3.2",
     "sass-lint": "^1.10.2",
