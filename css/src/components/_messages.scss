@@ -1,0 +1,22 @@
+.message {
+  background-color: #666;
+  padding: 2rem;
+}
+
+.message--error {
+  background-color: $color-message-error;
+}
+
+.message--status {
+  background-color: $color-message-warn;
+}
+
+.message--success {
+  background-color: $color-message-success;
+}
+
+// List item if many messages
+.message__item {
+  margin-bottom: 1rem;
+  color: $color-light;
+}
