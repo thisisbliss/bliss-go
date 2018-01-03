@@ -1,9 +1,8 @@
 // Set the base font-size to allow better rem usability.
-// 1rem = 10px, 1.5rem = 15px, 2rem = 2px etc.
+// 1rem = 10px, 1.5rem = 15px, 2rem = 20px etc.
 $font-base: 62.5%;
 $font-stack: Arial, "Helvetica Neue", Helvetica, sans-serif;
-$font-size: 1.6rem;
-$line-height: 1.5;
+$font-size: 1.6rem; // 16px
 
 // Sizes defined by modular scale using 1.125 ratio
 // http://www.modularscale.com/?1&rem&1.125&web&text
@@ -15,12 +14,31 @@ $font-size-h4: 1.424rem;
 $font-size-h5: 1.266rem;
 $font-size-h6: 1.125rem;
 
+// Font Weights & Examples
+
+$font-weight-light: 300;
+$font-weight-regular: 400;
+$font-weight-semi-bold: 500;
+$font-weight-bold: 600;
+
+// Margins & Line Heights
+$margin-heading: 3rem;
+
 // Colors
-$color-dark: rgba(67, 63, 67, 1.0);
-$color-light: rgba(254, 254, 254, 1.0);
-$color-primary: rgba(239, 94, 95, 1.0);
+$color-dark: #000;
+$color-light: #FFF;
+$color-primary: #ef5e5f;
+
+$color-message-error: red;
+$color-message-warn: orange;
+$color-message-success: green;
 
 // Breakpoints
-$breakpoint-small: only screen and (max-width: 480px);
-$breakpoint-medium: only screen and (max-width: 960px);
-$breakpoint-large: only screen and (max-width: 1200px);
+// We use EM for breakpoints to maintain consistency in all browsers.
+
+// 480px
+$breakpoint-small: "only screen and (max-width: 30em)";
+// 960px
+$breakpoint-medium: "only screen and (max-width: 60em)";
+// 1200px
+$breakpoint-large: "only screen and (max-width: 75em)";
