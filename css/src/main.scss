@@ -4,11 +4,6 @@
 @import "abstracts/variables";
 @import "abstracts/mixins";
 
-@import "components/breadcrumb";
-@import "components/messages";
-@import "components/tabs";
-@import "components/pagers";
-
 @import "base/util";
 @import "base/base";
 @import "base/typography";
@@ -16,3 +11,8 @@
 @import "base/media";
 @import "base/tables";
 @import "base/forms";
+
+@import "components/breadcrumb";
+@import "components/messages";
+@import "components/tabs";
+@import "components/pagers";
