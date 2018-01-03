@@ -20,3 +20,8 @@ textarea,
 textarea {
   resize: vertical;
 }
+
+[type="submit"],
+button {
+  appearance: none;
+}
