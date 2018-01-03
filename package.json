@@ -9,7 +9,7 @@
   "scripts": {
     "start": "gulp",
     "watch": "gulp",
-    "build": "gulp sass",
+    "build": "gulp build",
     "test": "gulp lint"
   },
   "author": "Tom Wilks",
@@ -23,8 +23,14 @@
     "gulp": "^3.9.1",
     "gulp-eslint": "^4.0.0",
     "gulp-postcss": "^7.0.0",
+    "@babel/core": "^7.0.0-beta.36",
+    "@babel/preset-env": "^7.0.0-beta.36",
+    "babel-loader": "^8.0.0-beta.0",
     "gulp-sass": "^3.1.0",
     "gulp-sass-lint": "^1.3.2",
-    "sass-lint": "^1.10.2"
+    "sass-lint": "^1.10.2",
+    "standard-loader": "^6.0.1",
+    "webpack": "^3.10.0",
+    "webpack-stream": "^4.0.0"
   }
 }
