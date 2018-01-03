@@ -5,7 +5,6 @@ html {
 body {
   font-family: $font-stack;
   font-size: $font-size;
-  line-height: $line-height;
   color: $color-dark;
 }
 
@@ -33,7 +32,8 @@ h6 {
   font-size: $font-size-h6;
 }
 
-a {
+// Apply style if anchor has no class
+a:not([class]) {
   color: $color-primary;
   text-decoration: none;
 }
