@@ -44,7 +44,7 @@ gulp.task('lint-sass', function () {
     .pipe(sassLint.failOnError())
 })
 
-gulp.task('watch:sass', function () {
+gulp.task('watch:sass', ['sass'], function () {
   return gulp
     .watch(styleInput, ['sass'])
     .on('change', function (event) {
