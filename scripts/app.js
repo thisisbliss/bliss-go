@@ -65,20 +65,22 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_drupal__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_drupal___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_drupal__);
 
 
-__WEBPACK_IMPORTED_MODULE_0_drupal___default.a.behaviors.greeting = {
-  attach: function (context, settings) {
-    console.log('Hello, Drupal!')
+var _drupal = _interopRequireDefault(__webpack_require__(1));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// import $ from 'jquery'
+_drupal.default.behaviors.greeting = {
+  attach: function attach(context, settings) {
+    var greeting = 'Hello, Drupal!';
+    console.log(greeting);
   }
-}
-
+};
 
 /***/ }),
 /* 1 */
