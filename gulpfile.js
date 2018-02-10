@@ -65,7 +65,7 @@ gulp.task('build', ['sass', 'scripts'])
 
 // Setup lint task
 // TODO: Remove this and have it as part of the sass build
-// process the same was JS linting is part of the bundling process?
+// process the same way JS linting is part of the bundling process?
 gulp.task('lint', ['lint-sass'])
 
 // Default task will be the watch task for ease of use

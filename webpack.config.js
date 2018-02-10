@@ -29,15 +29,11 @@ module.exports = {
       {
         enforce: 'pre',
         test: /\.js$/,
-        loader: 'eslint-loader',
+        loader: 'standard-loader',
         include: [
           path.resolve(__dirname, 'gulpfile.js'),
           path.resolve(__dirname, 'scripts/src')
-        ],
-        options: {
-          emitError: true,
-          failOnError: true
-        }
+        ]
       },
       {
         test: /\.js$/,
