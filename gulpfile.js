@@ -5,11 +5,15 @@ var gulp = require('gulp')
 var sass = require('gulp-sass')
 var autoprefixer = require('autoprefixer')
 var sassLint = require('gulp-sass-lint')
-var webpack = require('webpack-stream')
-var webpackConfig = require('./webpack.config')
+var babel = require('gulp-babel')
+var sourcemaps = require('gulp-sourcemaps')
+var standard = require('gulp-standard')
 
 var styleInput = './css/src/**/*.scss'
 var styleOutput = './css/'
+
+var scriptInput = './scripts/src/**/*.js'
+var scriptOutput = './scripts/'
 
 var sassOptions = {
   errLogToConsole: true,
@@ -31,8 +35,13 @@ gulp.task('sass', function () {
 })
 
 gulp.task('scripts', function () {
-  return webpack(webpackConfig)
-    .pipe(gulp.dest(webpackConfig.output.path))
+  gulp.src(scriptInput)
+    .pipe(sourcemaps.init())
+    .pipe(babel({
+        presets: ['env']
+    }))
+    .pipe(sourcemaps.write('.'))
+    .pipe(gulp.dest(scriptOutput))
 })
 
 // Linting config located in .sass-link.yml
@@ -44,6 +53,15 @@ gulp.task('lint-sass', function () {
     .pipe(sassLint.failOnError())
 })
 
+gulp.task('lint-scripts', function () {
+  return gulp.src(scriptInput)
+    .pipe(standard())
+    .pipe(standard.reporter('default', {
+      breakOnError: true,
+      quiet: true
+    }))
+})
+
 gulp.task('watch:sass', ['sass'], function () {
   return gulp
     .watch(styleInput, ['sass'])
@@ -52,9 +70,12 @@ gulp.task('watch:sass', ['sass'], function () {
     })
 })
 
-gulp.task('watch:scripts', function () {
-  var config = Object.assign({}, webpackConfig, { watch: true })
-  return webpack(config).pipe(gulp.dest(config.output.path))
+gulp.task('watch:scripts', ['scripts'], function () {
+  return gulp
+    .watch(scriptInput, ['scripts'])
+    .on('change', function (event) {
+      console.log('File ' + event.path + ' was ' + event.type + ', running tasks...')
+    })
 })
 
 // Watch for changes
@@ -66,7 +87,7 @@ gulp.task('build', ['sass', 'scripts'])
 // Setup lint task
 // TODO: Remove this and have it as part of the sass build
 // process the same was JS linting is part of the bundling process?
-gulp.task('lint', ['lint-sass'])
+gulp.task('lint', ['lint-sass', 'lint-scripts'])
 
 // Default task will be the watch task for ease of use
 gulp.task('default', ['watch'])
