@@ -7,7 +7,7 @@ var autoprefixer = require('autoprefixer')
 var sassLint = require('gulp-sass-lint')
 var babel = require('gulp-babel')
 var sourcemaps = require('gulp-sourcemaps')
-var standard = require('gulp-standard')
+var standard = require('gulp-semistandard')
 
 var styleInput = './css/src/**/*.scss'
 var styleOutput = './css/'
@@ -20,7 +20,7 @@ var sassOptions = {
   outputStyle: 'expanded'
 }
 
-gulp.task('sass', function () {
+gulp.task('sass', ['lint-sass'], function () {
   var processors = [
     autoprefixer({browsers: ['last 2 version']})
   ]
@@ -34,7 +34,7 @@ gulp.task('sass', function () {
     .pipe(gulp.dest(styleOutput))
 })
 
-gulp.task('scripts', function () {
+gulp.task('scripts', ['lint-scripts'], function () {
   gulp.src(scriptInput)
     .pipe(sourcemaps.init())
     .pipe(babel({
