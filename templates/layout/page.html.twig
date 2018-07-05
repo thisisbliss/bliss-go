@@ -45,7 +45,13 @@
 <div class="layout-container">
 
   <header role="banner">
+
     {{ page.header }}
+
+    {% if setting_phone_number %}
+      <a href="tel:{{ setting_phone_number }}"><span itemprop="telephone" content="{{ setting_phone_number }}">{{ setting_phone_number }}</span></a>
+    {% endif %}
+
   </header>
 
   {{ page.help }}
