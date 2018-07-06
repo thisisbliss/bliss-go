@@ -1,6 +1,109 @@
 <?php
 
-/* 
+/*
+  Implements hook_page_attachments().
+*/
+
+/*
+
+function blissgo_page_attachments_alter(array &$page) {
+  // Example to add google fonts link tag to head
+  $googlefont = [
+    '#type' => 'html_tag',
+    '#tag' => 'link',
+    '#attributes' => [
+      'rel' => 'stylesheet',
+      'href' => '//fonts.googleapis.com/css?family=Open+Sans:400,600,700',
+    ],
+  ];
+  $page['#attached']['html_head'][] = [$googlefont, 'googlefont'];
+}
+
+*/
+
+/*
+  Implements hook_form_system_theme_settings().
+*/
+
+function blissgo_preprocess_page(&$variables) {
+  /*
+    Load theme settings into useable variables.
+  */
+  if(!empty(theme_get_setting('phone_number'))) {
+    $variables['setting_phone_number'] = theme_get_setting('phone_number');
+  }
+}
+
+function blissgo_form_system_theme_settings_alter(&$form, \Drupal\Core\Form\FormStateInterface &$form_state, $form_id = NULL) {
+  // Work-around for a core bug affecting admin themes. See issue #943212.
+  if (isset($form_id)) {
+    return;
+  }
+
+  $form['general_details'] = array(
+    '#type'          => 'details',
+    '#title'         => t('General Details'),
+    '#open'          => TRUE,
+    '#weight'        => -5,
+  );
+
+  $form['general_details']['phone_number'] = array(
+    '#type'          => 'textfield',
+    '#title'         => t('Phone Number'),
+    '#default_value' => theme_get_setting('phone_number'),
+    '#description'   => t("A personal or company phone number to be displayed in various locations."),
+  );
+
+  $form['general_details']['address'] = array(
+    '#type'          => 'textfield',
+    '#title'         => t('Address'),
+    '#default_value' => theme_get_setting('address'),
+    '#description'   => t("A personal or company address to be displayed in various locations."),
+  );
+
+  $form['general_details']['copyright'] = array(
+    '#type'          => 'textfield',
+    '#title'         => t('Copyright Information'),
+    '#default_value' => theme_get_setting('copyright'),
+    '#description'   => t("Copyright information."),
+  );
+
+  $form['social_details'] = array(
+    '#type'          => 'details',
+    '#title'         => t('Social Accounts'),
+    '#weight'        => -4,
+  );
+
+  $form['social_details']['social_twitter'] = array(
+    '#type'          => 'textfield',
+    '#title'         => t('Twitter'),
+    '#default_value' => theme_get_setting('social_twitter'),
+    '#description'   => t("A link to a personal or company Twitter page."),
+  );
+
+  $form['social_details']['social_facebook'] = array(
+    '#type'          => 'textfield',
+    '#title'         => t('Facebook'),
+    '#default_value' => theme_get_setting('social_facebook'),
+    '#description'   => t("A link to a personal or company Facebook page."),
+  );
+
+  $form['social_details']['social_instagram'] = array(
+    '#type'          => 'textfield',
+    '#title'         => t('Instagram'),
+    '#default_value' => theme_get_setting('social_instagram'),
+    '#description'   => t("A link to a personal or company Instagram page."),
+  );
+
+  $form['social_details']['social_pinterest'] = array(
+    '#type'          => 'textfield',
+    '#title'         => t('Pinterest'),
+    '#default_value' => theme_get_setting('social_pinterest'),
+    '#description'   => t("A link to a personal or company Pinterest page."),
+  );
+}
+
+/*
   Preprocess tab items/links
 */
 function blissgo_preprocess_menu_local_task(&$variables) {
@@ -8,8 +111,8 @@ function blissgo_preprocess_menu_local_task(&$variables) {
     $variables['link']['#options']['attributes']['class'][] = 'tab__link';
 }
 
-/* 
-  Function to retrieve English node alias only 
+/*
+  Function to retrieve English node alias only
 */
 function _blissgo_current_path() {
   // Get the original un-aliased node path e.g. node/1
