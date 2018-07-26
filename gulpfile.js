@@ -57,7 +57,7 @@ gulp.task('lint-scripts', function () {
   return gulp.src(scriptInput)
     .pipe(standard())
     .pipe(standard.reporter('default', {
-      breakOnError: true,
+      showFilePath: true,
       quiet: true
     }))
 })
