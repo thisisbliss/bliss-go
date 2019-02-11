@@ -111,6 +111,23 @@ function blissgo_preprocess_menu_local_task(&$variables) {
     $variables['link']['#options']['attributes']['class'][] = 'tab__link';
 }
 
+/**
+ * Implements hook_preprocess_node().
+ * 
+ * Allows each node type to have it's own preprocess function.
+ * e.g. 
+ * Node type: book
+ * blissgo_preprocess_node_book(&$variables) {
+ *   ...
+ * }
+ */
+function blissgo_preprocess_node(&$variables) {
+  $function = __FUNCTION__ . '_' . $variables['node']->getType();
+  if (function_exists($function)) {
+    $function($variables);
+  }
+}
+
 /*
   Function to retrieve English node alias only
 */
