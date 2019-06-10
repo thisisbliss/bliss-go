@@ -29,6 +29,7 @@ Bliss go makes use of various NPM scripts to make it easy to get up and running.
 * `npm start` - compile styles and scripts and watch for any changes.
 * `npm run watch` - compile styles and scripts and watch for any changes.
 * `npm run build` - compile styles and script for distribution.
+* `npm run images` - lossless compress all images within the `images/src` directory.
 * `npm test` - run any tests present in the project.
 
 ## Linting
