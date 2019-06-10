@@ -8,12 +8,16 @@ var sassLint = require('gulp-sass-lint')
 var babel = require('gulp-babel')
 var sourcemaps = require('gulp-sourcemaps')
 var standard = require('gulp-semistandard')
+var imagemin = require('gulp-imagemin');
 
 var styleInput = './css/src/**/*.scss'
 var styleOutput = './css/'
 
 var scriptInput = './scripts/src/**/*.js'
 var scriptOutput = './scripts/'
+
+var imageInput = './images/src/*'
+var imageOutput = './images/'
 
 var sassOptions = {
   errLogToConsole: true,
@@ -43,6 +47,14 @@ gulp.task('scripts', ['lint-scripts'], function () {
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest(scriptOutput))
 })
+
+// Run 'gulp images' to optimise JPEG, PNG and SVG
+gulp.task('images', function () {
+  gulp.src(imageInput)
+    .pipe(imagemin())
+    .pipe(gulp.dest(imageOutput))
+  }
+);
 
 // Linting config located in .sass-link.yml
 gulp.task('lint-sass', function () {

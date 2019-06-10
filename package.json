@@ -28,6 +28,7 @@
     "gulp": "3.9.1",
     "gulp-babel": "^8.0.0",
     "gulp-eslint": "^5.0.0",
+    "gulp-imagemin": "^6.0.0",
     "gulp-postcss": "^8.0.0",
     "gulp-sass": "^4.0.2",
     "gulp-sass-lint": "^1.4.0",
