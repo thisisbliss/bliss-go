@@ -22,7 +22,7 @@ var sassOptions = {
 
 gulp.task('sass', ['lint-sass'], function () {
   var processors = [
-    autoprefixer({browsers: ['last 2 version']})
+    autoprefixer()
   ]
   return gulp
     .src(styleInput)
