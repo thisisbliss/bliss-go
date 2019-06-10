@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 Drupal.behaviors.greeting = {
   attach: function attach(context, settings) {
