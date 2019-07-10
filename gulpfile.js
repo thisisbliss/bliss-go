@@ -1,33 +1,43 @@
 'use strict'
 
-var postcss = require('gulp-postcss')
-var gulp = require('gulp')
-var sass = require('gulp-sass')
-var autoprefixer = require('autoprefixer')
-var sassLint = require('gulp-sass-lint')
-var babel = require('gulp-babel')
-var sourcemaps = require('gulp-sourcemaps')
-var standard = require('gulp-semistandard')
-var imagemin = require('gulp-imagemin');
+const postcss = require('gulp-postcss')
+const gulp = require('gulp')
+const sass = require('gulp-sass')
+const autoprefixer = require('autoprefixer')
+const sassLint = require('gulp-sass-lint')
+const babel = require('gulp-babel')
+const sourcemaps = require('gulp-sourcemaps')
+const standard = require('gulp-semistandard')
+const imagemin = require('gulp-imagemin');
 
-var styleInput = './css/src/**/*.scss'
-var styleOutput = './css/'
+const styleInput = './css/src/**/*.scss'
+const styleOutput = './css/'
 
-var scriptInput = './scripts/src/**/*.js'
-var scriptOutput = './scripts/'
+const scriptInput = './scripts/src/**/*.js'
+const scriptOutput = './scripts/'
 
-var imageInput = './images/src/*'
-var imageOutput = './images/'
+const imageInput = './images/src/*'
+const imageOutput = './images/'
 
-var sassOptions = {
+const sassOptions = {
   errLogToConsole: true,
   outputStyle: 'expanded'
 }
 
-gulp.task('sass', ['lint-sass'], function () {
-  var processors = [
+gulp.task('lint-styles', () => {
+  return gulp
+    .src(styleInput)
+    .pipe(sassLint())
+    .pipe(sassLint.format())
+    .pipe(sassLint.failOnError())
+})
+
+
+gulp.task('styles', gulp.series('lint-styles', () => {
+  const processors = [
     autoprefixer()
   ]
+
   return gulp
     .src(styleInput)
     .pipe(sassLint())
@@ -36,70 +46,45 @@ gulp.task('sass', ['lint-sass'], function () {
     .pipe(sass(sassOptions).on('error', sass.logError))
     .pipe(postcss(processors))
     .pipe(gulp.dest(styleOutput))
+}))
+
+gulp.task('lint-scripts', (done) => {
+  return gulp.src(scriptInput)
+  .pipe(standard())
+  .pipe(standard.reporter('default', {
+    showFilePath: true,
+    quiet: true
+  }))
 })
 
-gulp.task('scripts', ['lint-scripts'], function () {
-  gulp.src(scriptInput)
+gulp.task('scripts', gulp.series('lint-scripts', (done) => {
+  return gulp.src(scriptInput)
     .pipe(sourcemaps.init())
     .pipe(babel({
         presets: ['env']
     }))
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest(scriptOutput))
-})
+}))
 
-// Run 'gulp images' to optimise JPEG, PNG and SVG
-gulp.task('images', function () {
-  gulp.src(imageInput)
+gulp.task('images', (done) => {
+  return gulp.src(imageInput)
     .pipe(imagemin())
     .pipe(gulp.dest(imageOutput))
-  }
-);
+})
 
-// Linting config located in .sass-link.yml
-gulp.task('lint-sass', function () {
+gulp.task('watch:styles', gulp.series('styles', () => {
   return gulp
-    .src(styleInput)
-    .pipe(sassLint())
-    .pipe(sassLint.format())
-    .pipe(sassLint.failOnError())
-})
+    .watch(styleInput, gulp.series('styles'));
+}))
 
-gulp.task('lint-scripts', function () {
-  return gulp.src(scriptInput)
-    .pipe(standard())
-    .pipe(standard.reporter('default', {
-      showFilePath: true,
-      quiet: true
-    }))
-})
-
-gulp.task('watch:sass', ['sass'], function () {
+gulp.task('watch:scripts', gulp.series('scripts', () => {
   return gulp
-    .watch(styleInput, ['sass'])
-    .on('change', function (event) {
-      console.log('File ' + event.path + ' was ' + event.type + ', running tasks...')
-    })
-})
+  .watch(scriptInput, gulp.series('scripts'));
+}))
 
-gulp.task('watch:scripts', ['scripts'], function () {
-  return gulp
-    .watch(scriptInput, ['scripts'])
-    .on('change', function (event) {
-      console.log('File ' + event.path + ' was ' + event.type + ', running tasks...')
-    })
-})
+gulp.task('watch', gulp.parallel('watch:styles', 'watch:scripts'))
 
-// Watch for changes
-gulp.task('watch', ['watch:sass', 'watch:scripts'])
+gulp.task('lint', gulp.parallel('lint-styles', 'lint-scripts'))
 
-// Build dist output
-gulp.task('build', ['sass', 'scripts'])
-
-// Setup lint task
-// TODO: Remove this and have it as part of the sass build
-// process the same was JS linting is part of the bundling process?
-gulp.task('lint', ['lint-sass', 'lint-scripts'])
-
-// Default task will be the watch task for ease of use
-gulp.task('default', ['watch'])
+gulp.task('default', gulp.series('watch'))
