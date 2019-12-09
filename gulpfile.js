@@ -24,67 +24,84 @@ const sassOptions = {
   outputStyle: 'expanded'
 }
 
-gulp.task('lint-styles', () => {
+// Lint source styles through sass-lint
+function lintStyles() {
   return gulp
     .src(styleInput)
     .pipe(sassLint())
     .pipe(sassLint.format())
-    .pipe(sassLint.failOnError())
-})
+    .pipe(sassLint.failOnError()
+  );
+}
 
-
-gulp.task('styles', gulp.series('lint-styles', () => {
+// Compile styles with autoprefixer
+function styles() {
   const processors = [
     autoprefixer()
   ]
-
   return gulp
     .src(styleInput)
-    .pipe(sassLint())
-    .pipe(sassLint.format())
-    .pipe(sassLint.failOnError())
     .pipe(sass(sassOptions).on('error', sass.logError))
     .pipe(postcss(processors))
-    .pipe(gulp.dest(styleOutput))
-}))
+    .pipe(gulp.dest(styleOutput)
+  );
+}
 
-gulp.task('lint-scripts', (done) => {
-  return gulp.src(scriptInput)
-  .pipe(standard())
-  .pipe(standard.reporter('default', {
-    showFilePath: true,
-    quiet: true
-  }))
-})
+// Lint source scripts with standard
+function lintScripts() {
+  return gulp
+    .src(scriptInput)
+    .pipe(standard())
+    .pipe(standard.reporter('default', {
+      showFilePath: true,
+      quiet: true
+    })
+  );
+}
 
-gulp.task('scripts', gulp.series('lint-scripts', (done) => {
-  return gulp.src(scriptInput)
+// Compile scripts with babel for backwards compatibility
+function scripts() {
+  return gulp
+    .src(scriptInput)
     .pipe(sourcemaps.init())
     .pipe(babel({
-        presets: ['env']
+      presets: ['env']
     }))
     .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest(scriptOutput))
-}))
+    .pipe(gulp.dest(scriptOutput)
+  );
+}
 
-gulp.task('images', (done) => {
-  return gulp.src(imageInput)
+// Compress all images using imagemin
+function images() {
+  return gulp
+    .src(imageInput)
     .pipe(imagemin())
-    .pipe(gulp.dest(imageOutput))
-})
+    .pipe(gulp.dest(imageOutput)
+  );
+}
 
-gulp.task('watch:styles', gulp.series('styles', () => {
-  return gulp
-    .watch(styleInput, gulp.series('styles'));
-}))
+function watchAssets() {
+  // Watch styles
+  gulp.watch(styleInput, gulp.series(lintStyles, styles));
+  // Watch scripts
+  gulp.watch(scriptInput, gulp.series(lintScripts, scripts));
+  // Watch images
+  gulp.watch(imageInput, gulp.series(images));
+}
 
-gulp.task('watch:scripts', gulp.series('scripts', () => {
-  return gulp
-  .watch(scriptInput, gulp.series('scripts'));
-}))
+// Lint and compile scripts only
+const js = gulp.series(lintScripts, scripts);
+// Lint and compile styles only
+const css = gulp.series(lintStyles, styles);
+// Lint styles and scripts then compile styles, scripts and images
+const build = gulp.series(lintStyles, lintScripts, gulp.parallel(styles, scripts, images));
+// As above but then watch for changes in styles, scripts and images
+const watch = gulp.series(build, gulp.parallel(watchAssets));
 
-gulp.task('watch', gulp.parallel('watch:styles', 'watch:scripts'))
-
-gulp.task('lint', gulp.parallel('lint-styles', 'lint-scripts'))
-
-gulp.task('default', gulp.series('watch'))
+// Export private tasks to public gulp functions e.g. `gulp watch`
+exports.js = js;
+exports.css = css;
+exports.build = build;
+exports.watch = watch;
+exports.default = watch;
