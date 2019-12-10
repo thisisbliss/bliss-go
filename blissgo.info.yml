@@ -12,6 +12,10 @@ libraries:
 # Regions
 regions:
   header: Header
+  main_menu: 'Main Menu'
   help: Help
+  messages: 'Messages'
+  tabs: 'Tabs'
   content: Content
   footer: Footer
+  footer_menu: 'Footer Menu'
