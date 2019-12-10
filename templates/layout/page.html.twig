@@ -44,15 +44,7 @@
 #}
 <div class="layout-container">
 
-  <header role="banner">
-
-    {{ page.header }}
-
-    {% if setting_phone_number %}
-      <a href="tel:{{ setting_phone_number }}"><span itemprop="telephone" content="{{ setting_phone_number }}">{{ setting_phone_number }}</span></a>
-    {% endif %}
-
-  </header>
+  {% include '@blissgo/includes/header.html.twig' %}
 
   {{ page.help }}
 
@@ -60,15 +52,25 @@
     <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
 
     <div class="layout-content">
-      {{ page.content }}
+      {% if page.messages %}
+        {{ page.messages }}
+      {% endif %}
+
+      {% if page.tabs %}
+        {{ page.tabs }}
+      {% endif %}
+
+      {% if not node %}
+        <h1 class="page-title">{{ page['#title'] }}</h1>
+      {% endif %}
+
+      {% if page.content %}
+        {{ page.content }}
+      {% endif %}
     </div>{# /.layout-content #}
 
   </main>
 
-  {% if page.footer %}
-    <footer role="contentinfo">
-      {{ page.footer }}
-    </footer>
-  {% endif %}
+  {% include '@blissgo/includes/footer.html.twig' %}
 
 </div>{# /.layout-container #}
