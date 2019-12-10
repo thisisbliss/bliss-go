@@ -8,3 +8,17 @@ global:
   dependencies:
     - core/drupal
     - core/jquery
+    - blissgo/webfonts
+
+# Add webfont to libraries
+webfonts:
+  version: 1.x
+  js:
+    scripts/webfonts.js: {}
+  dependencies:
+    - blissgo/webfonts_lib
+
+# Add webfont lib to libraries
+webfonts_lib:
+  js:
+    '//ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js': { type: external, minified: true }
