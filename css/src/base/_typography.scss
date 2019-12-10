@@ -1,39 +1,22 @@
-html {
-  font-size: 62.5%;
-}
-
-body {
-  font-family: $font-stack;
-  font-size: $font-size;
-  color: $color-dark;
-}
-
 h1 {
-  font-size: $font-size-h1;
+  @include heading-1;
 }
 
 h2 {
-  font-size: $font-size-h2;
+  @include heading-2;
 }
 
 h3 {
-  font-size: $font-size-h3;
+  @include heading-3;
 }
 
-h4 {
-  font-size: $font-size-h4;
-}
+.is-wysiwyg {
+  * + * {
+    margin-top: 2rem;
+  }
 
-h5 {
-  font-size: $font-size-h5;
-}
-
-h6 {
-  font-size: $font-size-h6;
-}
-
-// Apply style if anchor has no class
-a:not([class]) {
-  color: $color-primary;
-  text-decoration: none;
+  li {
+    margin-top: 0.5rem;
+    list-style: inside;
+  }
 }
