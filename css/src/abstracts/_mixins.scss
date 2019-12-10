@@ -6,6 +6,30 @@
   left: 0;
 }
 
+@mixin heading-1 {
+  font-size: $font-size-large;
+  line-height: $line-height-small;
+  font-weight: $font-weight-bold;
+}
+
+@mixin heading-2 {
+  font-size: $font-size-medium-large;
+  line-height: $line-height-smallest;
+  font-weight: $font-weight-black;
+}
+
+@mixin heading-3 {
+  font-size: $font-size-medium;
+  line-height: $line-height-smallest;
+  font-weight: $font-weight-black;
+}
+
+@mixin running-text {
+  font-size: $font-size-regular;
+  line-height: $line-height-large;
+  font-weight: $font-weight-regular;
+}
+
 /**
   z-index
   Ordered from layer-one to layer-six.
