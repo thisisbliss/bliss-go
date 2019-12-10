@@ -1,12 +1,15 @@
 html {
   box-sizing: border-box;
+  font-size: 62.5%;
 }
 
-* {
-  box-sizing: inherit;
+body {
+  font-family: $font-family-body;
+  font-size: $font-size;
+  color: $color-dark;
+}
 
-  &:before,
-  &:after {
-    box-sizing: inherit;
-  }
+.layout-container {
+  max-width: 80rem;
+  margin: auto;
 }
