@@ -1,17 +1,24 @@
 .message {
-  background-color: #666;
+  background-color: #F9F9F9;
   padding: 2rem;
+  margin: 2rem auto;
+  color: $color-light;
+
+  a {
+    color: $color-light;
+    font-weight: $font-weight-semi-bold;
+  }
 }
 
 .message--error {
   background-color: $color-message-error;
 }
 
-.message--status {
-  background-color: $color-message-warn;
+.message--warning {
+  background-color: $color-message-warning;
 }
 
-.message--success {
+.message--status {
   background-color: $color-message-success;
 }
 
