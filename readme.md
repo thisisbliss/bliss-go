@@ -34,9 +34,9 @@ Bliss go makes use of various NPM scripts to make it easy to get up and running.
 
 ## Linting
 
-Bliss go makes use of various quality control tools, including linters which are responsible for checking code follows a standard style and format. You can view the rules enforced for styles in `.sass-lint.yml`. Javascript linting is handled by Standard, which has no configuration. 
+Bliss go makes use of various quality control tools, including linters which are responsible for checking code follows a standard style and format. You can view the rules enforced for styles in `.stylelintrc.json`. Javascript linting is handled by Standard, which has no configuration. 
 
-For more information, refer to the [sass-lint](https://github.com/sasstools/sass-lint) and [Standard](https://standardjs.com/) documentation.
+For more information, refer to the [stylelint](https://stylelint.io/) and [Standard](https://standardjs.com/) documentation.
 
 ## Help
 
