@@ -1,29 +1,32 @@
+@use "../abstracts/variables";
+
 .message {
   background-color: #F9F9F9;
   padding: 2rem;
   margin: 2rem auto;
-  color: $color-light;
+  color: variables.$color-light;
 
   a {
-    color: $color-light;
-    font-weight: $font-weight-semi-bold;
+    color: variables.$color-light;
+    font-weight: variables.$font-weight-semi-bold;
   }
 }
 
 .message--error {
-  background-color: $color-message-error;
+  background-color: variables.$color-message-error;
 }
 
 .message--warning {
-  background-color: $color-message-warning;
+  background-color: variables.$color-message-warning;
 }
 
 .message--status {
-  background-color: $color-message-success;
+  background-color: variables.$color-message-success;
 }
 
 // List item if many messages
+
 .message__item {
   margin-bottom: 1rem;
-  color: $color-light;
+  color: variables.$color-light;
 }

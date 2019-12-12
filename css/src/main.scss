@@ -1,16 +1,14 @@
-@import "abstracts/variables";
-@import "abstracts/mixins";
-
-@import "base/reset";
-@import "base/util";
-@import "base/base";
-@import "base/typography";
-@import "base/lists";
-@import "base/media";
-@import "base/tables";
-@import "base/forms";
-
-@import "components/breadcrumb";
-@import "components/messages";
-@import "components/tabs";
-@import "components/pagers";
+@use "abstracts/variables";
+@use "abstracts/mixins";
+@use "base/reset";
+@use "base/util";
+@use "base/base";
+@use "base/typography";
+@use "base/lists";
+@use "base/media";
+@use "base/tables";
+@use "base/forms";
+@use "components/breadcrumb";
+@use "components/messages";
+@use "components/tabs";
+@use "components/pagers";

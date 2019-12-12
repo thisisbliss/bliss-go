@@ -1,12 +1,13 @@
 // Inspiration from https://github.com/hankchizljaw/modern-css-reset
 
 *,
-*:before,
-*:after {
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
 // Remove default margin
+
 body,
 h1,
 h2,
@@ -30,6 +31,7 @@ ol {
 }
 
 // Set core body defaults
+
 body {
   min-height: 100vh;
   scroll-behavior: smooth;
@@ -38,17 +40,23 @@ body {
 }
 
 // Remove list styles on ul, ol elements with a class attribute
+
+/* stylelint-disable */
+
 ul[class],
 ol[class] {
   list-style: none;
 }
+/* stylelint-enable */
 
 // A elements that don't have a class get default styles
+
 a:not([class]) {
   text-decoration-skip-ink: auto;
 }
 
 // Make images easier to work with
+
 img {
   max-width: 100%;
   height: auto;
@@ -56,6 +64,7 @@ img {
 }
 
 // Inherit fonts for inputs and buttons
+
 input,
 button,
 textarea,

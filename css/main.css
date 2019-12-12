@@ -1,14 +1,6 @@
-/**
-  z-index
-  Ordered from layer-one to layer-six.
-  Layer-one is equal to the highest z-index.
-  Layer-six is equal to the lowest z-index.
-  For example, to set highest z-index use:
-  z-index: z-index(layer-one);
-**/
 *,
-*:before,
-*:after {
+*::before,
+*::after {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
@@ -42,11 +34,13 @@ body {
   line-height: 1.5;
 }
 
+/* stylelint-disable */
 ul[class],
 ol[class] {
   list-style: none;
 }
 
+/* stylelint-enable */
 a:not([class]) {
   -webkit-text-decoration-skip: ink;
           text-decoration-skip-ink: auto;
@@ -103,7 +97,6 @@ h3 {
 .is-wysiwyg * + * {
   margin-top: 2rem;
 }
-
 .is-wysiwyg li {
   margin-top: 0.5rem;
   list-style: inside;
@@ -136,20 +129,20 @@ th {
   vertical-align: middle;
 }
 
-[type="color"],
-[type="date"],
-[type="datetime"],
-[type="datetime-local"],
-[type="email"],
-[type="month"],
-[type="number"],
-[type="password"],
-[type="search"],
-[type="tel"],
-[type="text"],
-[type="time"],
-[type="url"],
-[type="week"],
+[type=color],
+[type=date],
+[type=datetime],
+[type=datetime-local],
+[type=email],
+[type=month],
+[type=number],
+[type=password],
+[type=search],
+[type=tel],
+[type=text],
+[type=time],
+[type=url],
+[type=week],
 textarea,
 [multiple] {
   padding: 1rem;
@@ -159,7 +152,7 @@ textarea {
   resize: vertical;
 }
 
-[type="submit"],
+[type=submit],
 button {
   -webkit-appearance: none;
      -moz-appearance: none;
@@ -172,7 +165,6 @@ button {
   margin: 2rem auto;
   color: #FFF;
 }
-
 .message a {
   color: #FFF;
   font-weight: 600;
@@ -183,7 +175,7 @@ button {
 }
 
 .message--warning {
-  background-color: orange;
+  background-color: #FFA500;
 }
 
 .message--status {

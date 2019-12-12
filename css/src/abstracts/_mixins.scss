@@ -1,3 +1,6 @@
+@use "sass:map";
+@use "variables";
+
 @mixin spread {
   position: absolute;
   top: 0;
@@ -7,37 +10,37 @@
 }
 
 @mixin heading-1 {
-  font-size: $font-size-large;
-  line-height: $line-height-small;
-  font-weight: $font-weight-bold;
+  font-size: variables.$font-size-large;
+  line-height: variables.$line-height-small;
+  font-weight: variables.$font-weight-bold;
 }
 
 @mixin heading-2 {
-  font-size: $font-size-medium-large;
-  line-height: $line-height-smallest;
-  font-weight: $font-weight-black;
+  font-size: variables.$font-size-medium-large;
+  line-height: variables.$line-height-smallest;
+  font-weight: variables.$font-weight-black;
 }
 
 @mixin heading-3 {
-  font-size: $font-size-medium;
-  line-height: $line-height-smallest;
-  font-weight: $font-weight-black;
+  font-size: variables.$font-size-medium;
+  line-height: variables.$line-height-smallest;
+  font-weight: variables.$font-weight-black;
 }
 
 @mixin running-text {
-  font-size: $font-size-regular;
-  line-height: $line-height-large;
-  font-weight: $font-weight-regular;
+  font-size: variables.$font-size-regular;
+  line-height: variables.$line-height-large;
+  font-weight: variables.$font-weight-regular;
 }
 
-/**
-  z-index
-  Ordered from layer-one to layer-six.
-  Layer-one is equal to the highest z-index.
-  Layer-six is equal to the lowest z-index.
-  For example, to set highest z-index use:
-  z-index: z-index(layer-one);
-**/
+//
+//   z-index
+//   Ordered from layer-one to layer-six.
+//   Layer-one is equal to the highest z-index.
+//   Layer-six is equal to the lowest z-index.
+//   For example, to set highest z-index use:
+//   z-index: z-index(layer-one);
+//
 $zindex: (
   layer-one   : 5,
   layer-two   : 4,
@@ -48,9 +51,9 @@ $zindex: (
 );
 
 @function z-index($layer) {
-  @if not map-has-key($zindex, $layer) {
+  @if not map.has-key($zindex, $layer) {
     @warn "No layer found for `#{$layer}` in $zindex map. Property omitted.";
   }
 
-  @return map-get($zindex, $layer);
+  @return map.get($zindex, $layer);
 }
