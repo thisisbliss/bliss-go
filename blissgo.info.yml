@@ -3,7 +3,7 @@ name: Bliss Go
 type: theme
 description: 'A bare starting point for Drupal 8.'
 package: Core
-version: VERSION
+version: 2.x
 core: 8.x
 
 libraries:
