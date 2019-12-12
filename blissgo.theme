@@ -1,40 +1,58 @@
 <?php
 
 /*
-  Implements hook_page_attachments().
-*/
-
-/*
-
-function blissgo_page_attachments_alter(array &$page) {
-  // Example to add google fonts link tag to head
-  $googlefont = [
-    '#type' => 'html_tag',
-    '#tag' => 'link',
-    '#attributes' => [
-      'rel' => 'stylesheet',
-      'href' => '//fonts.googleapis.com/css?family=Open+Sans:400,600,700',
-    ],
-  ];
-  $page['#attached']['html_head'][] = [$googlefont, 'googlefont'];
-}
-
-*/
-
-/*
   Implements hook_form_system_theme_settings().
 */
 
 function blissgo_preprocess_page(&$variables) {
   /*
+    Create a class to add to a page template if current page is a view
+  */
+  $view_id = \Drupal::routeMatch()->getParameter('view_id');
+  if (!empty($view_id)) {
+    // Do stuff here only used by view pages
+    $variables['is_view'] = 'is-view-page';
+  }
+
+  /*
     Load theme settings into useable variables.
   */
-  if(!empty(theme_get_setting('phone_number'))) {
-    $variables['setting_phone_number'] = theme_get_setting('phone_number');
-  }
+  _blissgo_theme_settings();
+  
 }
 
-function blissgo_form_system_theme_settings_alter(&$form, \Drupal\Core\Form\FormStateInterface &$form_state, $form_id = NULL) {
+/*
+  Preprocess tab items/links
+*/
+function blissgo_preprocess_menu_local_task(&$variables) {
+    // Add BEM class to link
+    $variables['link']['#options']['attributes']['class'][] = 'tab__link';
+}
+
+/**
+ * Implements hook_preprocess_node().
+ * 
+ * Allows each node type to have it's own preprocess function.
+ * e.g. 
+ * Node type: book
+ * blissgo_preprocess_node_book(&$variables) {
+ *   ...
+ * }
+ */
+function blissgo_preprocess_node(&$variables) {
+  $function = __FUNCTION__ . '_' . $variables['node']->getType();
+  if (function_exists($function)) {
+    $function($variables);
+  }
+
+  /*
+    Load theme settings into useable variables.
+  */
+  _blissgo_theme_settings();
+}
+
+function blissgo_form_system_theme_settings_alter(&$form, \Drupal\Core\Form\FormStateInterface &$form_state, $form_id = NULL)
+{
   // Work-around for a core bug affecting admin themes. See issue #943212.
   if (isset($form_id)) {
     return;
@@ -103,35 +121,49 @@ function blissgo_form_system_theme_settings_alter(&$form, \Drupal\Core\Form\Form
   );
 }
 
-/*
-  Preprocess tab items/links
-*/
-function blissgo_preprocess_menu_local_task(&$variables) {
-    // Add BEM class to link
-    $variables['link']['#options']['attributes']['class'][] = 'tab__link';
-}
+function _blissgo_theme_settings() {
+  if (!empty(theme_get_setting('phone_number'))) {
+    $variables['setting_phone_number'] = theme_get_setting('phone_number');
+  }
 
-/**
- * Implements hook_preprocess_node().
- * 
- * Allows each node type to have it's own preprocess function.
- * e.g. 
- * Node type: book
- * blissgo_preprocess_node_book(&$variables) {
- *   ...
- * }
- */
-function blissgo_preprocess_node(&$variables) {
-  $function = __FUNCTION__ . '_' . $variables['node']->getType();
-  if (function_exists($function)) {
-    $function($variables);
+  if (!empty(theme_get_setting('address'))) {
+    $variables['setting_address'] = theme_get_setting('address');
+  }
+
+  if (!empty(theme_get_setting('copyright'))) {
+    $variables['setting_copyright'] = theme_get_setting('copyright');
+  }
+
+  if (!empty(theme_get_setting('company_number'))) {
+    $variables['setting_company_number'] = theme_get_setting('company_number');
+  }
+
+  if (!empty(theme_get_setting('company_vat_number'))) {
+    $variables['setting_company_vat_number'] = theme_get_setting('company_vat_number');
+  }
+
+  if (!empty(theme_get_setting('social_twitter'))) {
+    $variables['setting_twitter'] = theme_get_setting('social_twitter');
+  }
+
+  if (!empty(theme_get_setting('social_facebook'))) {
+    $variables['setting_facebook'] = theme_get_setting('social_facebook');
+  }
+
+  if (!empty(theme_get_setting('social_instagram'))) {
+    $variables['setting_instagram'] = theme_get_setting('social_instagram');
+  }
+
+  if (!empty(theme_get_setting('social_pinterest'))) {
+    $variables['setting_pinterest'] = theme_get_setting('social_pinterest');
   }
 }
 
 /*
   Function to retrieve English node alias only
 */
-function _blissgo_current_path() {
+function _blissgo_current_path()
+{
   // Get the original un-aliased node path e.g. node/1
   $original_path = \Drupal::service('path.current')->getPath();
   // Get current alias via node path and pass in the language we want to load it from
