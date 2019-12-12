@@ -1,37 +1,41 @@
 'use strict'
 
-const postcss = require('gulp-postcss')
-const gulp = require('gulp')
-const sass = require('gulp-sass')
-const autoprefixer = require('autoprefixer')
-const sassLint = require('gulp-sass-lint')
-const babel = require('gulp-babel')
-const sourcemaps = require('gulp-sourcemaps')
-const standard = require('gulp-semistandard')
+const postcss = require('gulp-postcss');
+const gulp = require('gulp');
+const sass = require('gulp-dart-sass');
+const autoprefixer = require('autoprefixer');
+const babel = require('gulp-babel');
+const sourcemaps = require('gulp-sourcemaps');
+const standard = require('gulp-semistandard');
 const imagemin = require('gulp-imagemin');
+const gulpStylelint = require('gulp-stylelint');
 
-const styleInput = './css/src/**/*.scss'
-const styleOutput = './css/'
+const styleInput = './css/src/**/*.scss';
+const styleOutput = './css/';
 
-const scriptInput = './scripts/src/**/*.js'
-const scriptOutput = './scripts/'
+const scriptInput = './scripts/src/**/*.js';
+const scriptOutput = './scripts/';
 
-const imageInput = './images/src/*'
-const imageOutput = './images/'
+const imageInput = './images/src/*';
+const imageOutput = './images/';
 
 const sassOptions = {
   errLogToConsole: true,
   outputStyle: 'expanded'
-}
+};
 
 // Lint source styles through sass-lint
 function lintStyles() {
   return gulp
-    .src(styleInput)
-    .pipe(sassLint())
-    .pipe(sassLint.format())
-    .pipe(sassLint.failOnError()
-  );
+    .src(styleInput, { since: gulp.lastRun(lintStyles) })
+    .pipe(gulpStylelint({
+      fix: true,
+      failAfterError: false,
+      reporters: [
+        { formatter: 'string', console: true }
+      ]
+    }))
+    .pipe(gulp.dest('./css/src/'));
 }
 
 // Compile styles with autoprefixer
