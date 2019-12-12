@@ -28,14 +28,15 @@
     "babel-preset-env": "^1.7.0",
     "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",
+    "gulp-dart-sass": "^0.9.1",
     "gulp-eslint": "^6.0.0",
     "gulp-imagemin": "^6.2.0",
     "gulp-postcss": "^8.0.0",
-    "gulp-sass": "^4.0.2",
-    "gulp-sass-lint": "^1.4.0",
     "gulp-semistandard": "^1.0.0",
     "gulp-sourcemaps": "^2.6.5",
-    "sass-lint": "^1.13.1"
+    "gulp-stylelint": "^11.0.0",
+    "stylelint": "^12.0.0",
+    "stylelint-config-standard": "^19.0.0"
   },
   "browserslist": [
     "last 2 version",
