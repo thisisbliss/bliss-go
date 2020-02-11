@@ -1,15 +1,15 @@
-@use "../abstracts/mixins";
+@use "../abstracts/type";
 
 h1 {
-  @include mixins.heading-1;
+  @include type.heading-1;
 }
 
 h2 {
-  @include mixins.heading-2;
+  @include type.heading-2;
 }
 
 h3 {
-  @include mixins.heading-3;
+  @include type.heading-3;
 }
 
 .is-wysiwyg {
