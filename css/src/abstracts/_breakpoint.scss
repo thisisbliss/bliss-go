@@ -1,0 +1,22 @@
+// Breakpoints
+// We use EM for breakpoints to maintain consistency in all browsers.
+
+$breakpoints: (
+  s: 30em, //480px
+  m: 60em, // 960px
+  l: 75em // 1200px
+);
+
+// _mixins.scss
+@mixin respond($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (max-width: #{map-get($breakpoints, $breakpoint)}) {
+      @content;
+    }
+  }
+
+  @else {
+    @warn "No value could be retrieved from `#{$breakpoint}`. "
+      + "Please make sure it is defined in `$breakpoints` map.";
+  }
+}
