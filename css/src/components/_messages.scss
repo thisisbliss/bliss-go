@@ -1,32 +1,33 @@
-@use "../abstracts/variables";
+@use "../abstracts/colour";
+@use "../abstracts/type";
 
 .message {
   background-color: #F9F9F9;
   padding: 2rem;
   margin: 2rem auto;
-  color: variables.$color-light;
+  color: colour.$light;
 
   a {
-    color: variables.$color-light;
-    font-weight: variables.$font-weight-semi-bold;
+    color: colour.$light;
+    font-weight: type.$semi-bold;
   }
 }
 
 .message--error {
-  background-color: variables.$color-message-error;
+  background-color: colour.$error;
 }
 
 .message--warning {
-  background-color: variables.$color-message-warning;
+  background-color: colour.$warning;
 }
 
 .message--status {
-  background-color: variables.$color-message-success;
+  background-color: colour.$success;
 }
 
 // List item if many messages
 
 .message__item {
   margin-bottom: 1rem;
-  color: variables.$color-light;
+  color: colour.$light;
 }
