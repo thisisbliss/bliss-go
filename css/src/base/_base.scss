@@ -1,14 +1,15 @@
-@use "../abstracts/variables";
+@use "../abstracts/type";
+@use "../abstracts/colour";
 
 html {
   box-sizing: border-box;
-  font-size: 62.5%;
+  font-size: type.$base;
 }
 
 body {
-  font-family: variables.$font-family-body;
-  font-size: variables.$font-size;
-  color: variables.$color-dark;
+  font-family: type.$body;
+  font-size: type.$root;
+  color: colour.$dark;
 }
 
 .layout-container {
