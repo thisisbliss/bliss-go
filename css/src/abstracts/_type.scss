@@ -1,0 +1,57 @@
+@use "breakpoint";
+// Set the base font-size to allow better rem usability.
+// 1rem = 10px, 1.5rem = 15px, 2rem = 20px etc.
+$base: 62.5% !default;
+$root: 1.6rem !default; // 16px
+
+$body: "Source Sans Pro", sans-serif !default;
+$heading: "Source Sans Pro", sans-serif !default;
+
+$xxs: 1rem !default;
+$xs: 1.2rem !default;
+$s: 1.4rem !default;
+$m: 1.8rem !default;
+$l: 2.2rem !default;
+$xl: 4rem !default;
+$xxl: 8rem !default;
+
+$line-xs: 1.25 !default;
+$line-s: 1.3 !default;
+$line-m: 1.5 !default;
+$line-l: 1.6 !default;
+
+// Font Weights & Examples
+$light: 300 !default;
+$regular: 400 !default;
+$semi-bold: 600 !default;
+$bold: 700 !default;
+$black: 900 !default;
+
+@mixin heading-1 {
+  font-size: $xl;
+  line-height: $line-s;
+  font-weight: $bold;
+
+  // Example mixin for reponsive work. 's' indicates the layer. Could be 'm' or 'l'.
+  @include breakpoint.respond(s) {
+    font-size: $l;
+  }
+}
+
+@mixin heading-2 {
+  font-size: $l;
+  line-height: $line-xs;
+  font-weight: $black;
+}
+
+@mixin heading-3 {
+  font-size: $l;
+  line-height: $line-xs;
+  font-weight: $black;
+}
+
+@mixin running-text {
+  font-size: $m;
+  line-height: $line-l;
+  font-weight: $regular;
+}
